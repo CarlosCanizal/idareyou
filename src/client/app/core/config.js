@@ -9,11 +9,11 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
   $stateProvider
     .state('home', {
       url:'/',
-      templateUrl: 'app/layout/shell.html',
-      data:{
-        menu: 'home',
-        submenu: 'store'
-      }
-    });  
+      templateUrl: 'app/layout/shell.html'
+    })
+    .state('newChallenge', {
+      url:'/challenge/new',
+      templateUrl: 'app/challenge/challenge.new.html'
+    });
   $urlRouterProvider.otherwise('/');
 }
