@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var paths = require('./gulp/gulp.config.json');
 var $ = require('gulp-load-plugins')();
 
-
 gulp.task('default', ['watch','jade','sass']);
 
 gulp.task('watch', function() {
