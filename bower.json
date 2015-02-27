@@ -1,0 +1,26 @@
+{
+  "name": "iDareYou",
+  "version": "0.0.0",
+  "homepage": "idareyou.club",
+  "authors": [
+    "Carlos Canizal <carlos@codecery.com>",
+    "Juan Marin <juan@codecery.com"
+  ],
+  "description": "I Dare you! Challenge for LAUNCH Hackaton 2015",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "challenge",
+    "friends"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.6",
+    "pure": "~0.5.0",
+    "components-font-awesome": "~4.2.0",
+    "angular-ui-router": "~0.2.13",
+    "angular-resource": "~1.3.6",
+    "angular-local-storage": "~0.1.5"
+  }
+}

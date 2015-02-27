@@ -1,0 +1,9 @@
+{
+  "sass": [
+    "src/client/common/**/*.sass",
+    "src/client/app/**/*.sass"
+  ],
+  "jade": [
+    "src/client/**/*.jade" 
+  ]
+}
