@@ -11,9 +11,11 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       url:'/',
       templateUrl: 'app/layout/shell.html'
     })
-    .state('newChallenge', {
-      url:'/challenge/new',
-      templateUrl: 'app/challenge/challenge.new.html'
+    .state('newDare', {
+      url:'/dare/new',
+      templateUrl: 'app/dare/dare.new.html',
+      controller: 'Dare',
+      controllerAs: 'dare'
     });
   $urlRouterProvider.otherwise('/');
 }

@@ -6,6 +6,7 @@
     'restangular',
     'app.core',
     'app.layout',
+    'app.dare'
 
 
   ]);
