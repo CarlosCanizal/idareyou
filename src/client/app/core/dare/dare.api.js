@@ -25,7 +25,8 @@
       getMessages: getMessages,
       saveInvitation: saveInvitation,
       getUsers: getUsers,
-      upload: upload
+      upload: upload,
+      finishIt: finishIt
     };
 
     return dare;
@@ -83,13 +84,40 @@
     }
 
     function sendMessage(user,challenge, message, file){
-      alert();
       var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},
                     user:{"__type":"Pointer",className:"_User","objectId":user.objectId},
                     message:message};
       if(file){
         return this.upload(headers.keys, file).then(function(file){
           params['file'] = file.data;
+          return Message.save(params).$promise;
+        });
+      }else{
+        return Message.save(params).$promise;
+      }
+    }
+
+    function finishIt(user,challenge, message, file){
+      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},
+                    user:{"__type":"Pointer",className:"_User","objectId":user.objectId},
+                    message:message};
+      var uploadFile;
+
+      if(file){
+        return this.upload(headers.keys, file)
+        .then(function(newFile){
+          uploadFile = newFile;
+          var where = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},
+                       email:user.username
+                      };
+          return Response.get({where:where}).$promise;
+        }).then(function(result){
+          var invitation = result.results[0];
+          console.log(invitation);
+          return Response.update({objectId: invitation.objectId,completed:true}).$promise;
+
+        }).then(function(){
+          params['file'] = uploadFile.data;
           return Message.save(params).$promise;
         });
       }else{

@@ -26,14 +26,17 @@ form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
       input(name="message", data-ng-model="challenge.message", required="")
 a.pure-button.pure-button-primary(data-ng-click="challenge.sendMessage()")
   |Send Message
-//- div
-//-   form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
-//-     fieldset
-//-      ng-form(name="challenge.completed")
-//-         label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")
-//-           | message:
-//-         label.error(for="message", ng-show="challenge.completed.message.$invalid && challenge.completed.message.$dirty")
-//-           | message is required:
-//-         input(name="message", data-ng-model="challenge.message", required="")
-//-   a.pure-button.pure-button-primary(data-ng-click="challenge.completed()")
-//-     |Completed
+div
+  form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
+    fieldset
+     ng-form(name="challenge.completed")
+        |{{challenge.proof}}
+        a(class="pure-button" ng-file-select ng-model="challenge.proof")
+          |Select File
+        label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")
+          | message:
+        label.error(for="message", ng-show="challenge.completed.message.$invalid && challenge.completed.message.$dirty")
+          | message is required:
+        input(name="message", data-ng-model="challenge.completedMessage", required="")
+  a.pure-button.pure-button-primary(data-ng-click="challenge.finishIt()")
+    |Completed

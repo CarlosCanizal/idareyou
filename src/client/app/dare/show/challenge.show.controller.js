@@ -49,6 +49,20 @@
       }
     }
 
+    challenge.finishIt = function(){
+      if(challenge.completed.$valid){
+        var file;
+        if(challenge.proof)
+          file = challenge.proof[0];
+
+         dareApi.finishIt(shell.user,challenge.info,challenge.completedMessage,file).then(function(result){
+          console.log('done!');
+         },function(error){
+          console.log(error);
+         })
+      }
+    }
+
   }
 
 

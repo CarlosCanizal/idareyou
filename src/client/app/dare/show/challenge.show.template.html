@@ -13,3 +13,14 @@
     </ng-form>
   </fieldset>
 </form><a data-ng-click="challenge.sendMessage()" class="pure-button pure-button-primary">Send Message</a>
+<div>
+  <form name="challenge.completed" novalidate="" class="pure-form pure-form-stacked">
+    <fieldset>
+      <ng-form name="challenge.completed">{{challenge.proof}}<a ng-file-select="ng-file-select" ng-model="challenge.proof" class="pure-button">Select File</a>
+        <label for="message" ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine">message:</label>
+        <label for="message" ng-show="challenge.completed.message.$invalid &amp;&amp; challenge.completed.message.$dirty" class="error">message is required:</label>
+        <input name="message" data-ng-model="challenge.completedMessage" required=""/>
+      </ng-form>
+    </fieldset>
+  </form><a data-ng-click="challenge.finishIt()" class="pure-button pure-button-primary">Completed</a>
+</div>
