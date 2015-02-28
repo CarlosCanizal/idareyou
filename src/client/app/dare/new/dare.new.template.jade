@@ -16,5 +16,10 @@ form.pure-form.pure-form-stacked(name="form", novalidate="")
         label.error(for="description", ng-show="form.description.$invalid && form.description.$dirty")
           | Description is required:
         input(name="description", data-ng-model="dare.info.description", required="")
+        label(for="pledge", ng-show="form.pledge.$valid || form.pledge.$pristine")
+          | Pledge:
+        label.error(for="pledge", ng-show="form.pledge.$invalid && form.pledge.$dirty")
+          | Pledge is required:
+        input(name="pledge", type="number", data-ng-model="dare.info.pledge", required="")
       a.pure-button.pure-button-primary(data-ng-click="dare.saveDare()")
         |Create

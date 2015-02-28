@@ -13,9 +13,21 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
     })
     .state('newDare', {
       url:'/dare/new',
-      templateUrl: 'app/dare/dare.new.template.html',
+      templateUrl: 'app/dare/new/dare.new.template.html',
       controller: 'Dare',
       controllerAs: 'dare'
+    })
+    .state('invite', {
+      url:'/invite/:dareId',
+      templateUrl: 'app/dare/invite/invite.template.html',
+      controller: 'Invite',
+      controllerAs: 'invite',
+      resolve: {
+        query: function(dareApi, $stateParams){
+          var dareId = $stateParams.dareId;
+          return dareApi.get($stateParams.objectId);
+        }
+      }
     });
   $urlRouterProvider.otherwise('/');
 }

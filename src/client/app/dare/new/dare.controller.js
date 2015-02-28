@@ -11,7 +11,9 @@
     var dare = this;
 
     dare.saveDare = function(){
+      alert();
       if($scope.form.$valid){
+        alert();
         console.log(dare.file);
         dareApi.save(dare.info, dare.file).then(function(result){
           console.log(result);

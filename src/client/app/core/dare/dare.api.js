@@ -14,7 +14,8 @@
     
 
     var dare = {
-      save : save
+      save : save,
+      get: get
     };
 
     return dare;
@@ -30,7 +31,11 @@
       }).then(function(image){
         params['image'] = image.data;
         return Dare.save(params).$promise;
-      })
+      });
+    }
+
+    function get(objectId){
+      return Dare.get({objectId:objectId}).$promise;
     }
   }
 })();
