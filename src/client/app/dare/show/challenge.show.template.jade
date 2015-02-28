@@ -2,17 +2,23 @@ h1
   |Show
 |{{challenge.info}}
 h1
-  |Have Accepted
-|{{challenge.haveAccepted}}
+  |Users {{challenge.users.length}}
+|{{challenge.users}}
 h1
-  |Have not Accepted
-|{{challenge.haveNotAccepted}}
+  |Have Accepted {{challenge.hasAccepted.length}}
+|{{challenge.hasAccepted}}
 h1
-  |Messages
+  |Have not Accepted  {{challenge.hasNotAccepted.length}}
+|{{challenge.hasNotAccepted}}
+h1
+  |Messages |{{challenge.messages.length}}
 |{{challenge.messages}}
 form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
   fieldset
     ng-form(name="challenge.form")
+      |{{challenge.file}}
+      a(class="pure-button" ng-file-select ng-model="challenge.file")
+        |Select File
       label(for="message", ng-show="challenge.form.message.$valid || challenge.form.message.$pristine")
         | message:
       label.error(for="message", ng-show="challenge.form.message.$invalid && challenge.form.message.$dirty")
@@ -20,3 +26,14 @@ form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
       input(name="message", data-ng-model="challenge.message", required="")
 a.pure-button.pure-button-primary(data-ng-click="challenge.sendMessage()")
   |Send Message
+//- div
+//-   form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
+//-     fieldset
+//-      ng-form(name="challenge.completed")
+//-         label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")
+//-           | message:
+//-         label.error(for="message", ng-show="challenge.completed.message.$invalid && challenge.completed.message.$dirty")
+//-           | message is required:
+//-         input(name="message", data-ng-model="challenge.message", required="")
+//-   a.pure-button.pure-button-primary(data-ng-click="challenge.completed()")
+//-     |Completed

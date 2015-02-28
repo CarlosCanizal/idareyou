@@ -12,13 +12,16 @@
     var challenge = this;
     challenge.info = info;
     challenge.messages = [];
-    challenge.haveAccepted =[];
-    challenge.haveNotAccepted = [];
+    challenge.hasAccepted =[];
+    challenge.hasNotAccepted = [];
+    challenge.users = [];
 
 
     dareApi.getUsers(challenge.info.objectId).then(function(result){
-      challenge.haveAccepted = result.acceptedUsers;
-      challenge.haveNotAccepted = result.denyUsers;
+      console.log(result);
+      challenge.users = result.all;
+      challenge.hasAccepted = result.hasAccepted;
+      challenge.hasNotAccepted = result.hasNotAccepted;
     },function(error){
       console.log(error);
     });
@@ -33,8 +36,13 @@
 
     challenge.sendMessage = function(){
       if(challenge.form.$valid){
-         dareApi.sendMessage(shell.user,challenge.info,challenge.message).then(function(result){
-          challenge.messages.push({objectId:result.objectId, message: challenge.message});
+        var file;
+        if(challenge.file)
+          file = challenge.file[0];
+
+         dareApi.sendMessage(shell.user,challenge.info,challenge.message,file).then(function(result){
+          console.log('done!');
+          challenge.messages.push({objectId:result.objectId, message: challenge.message,type:'message'});
          },function(error){
           console.log(error);
          })

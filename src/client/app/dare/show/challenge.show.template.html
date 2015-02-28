@@ -1,11 +1,12 @@
 
 <h1>Show</h1>{{challenge.info}}
-<h1>Have Accepted</h1>{{challenge.haveAccepted}}
-<h1>Have not Accepted</h1>{{challenge.haveNotAccepted}}
-<h1>Messages</h1>{{challenge.messages}}
+<h1>Users {{challenge.users.length}}</h1>{{challenge.users}}
+<h1>Have Accepted {{challenge.hasAccepted.length}}</h1>{{challenge.hasAccepted}}
+<h1>Have not Accepted  {{challenge.hasNotAccepted.length}}</h1>{{challenge.hasNotAccepted}}
+<h1>Messages |{{challenge.messages.length}}</h1>{{challenge.messages}}
 <form name="challenge.form" novalidate="" class="pure-form pure-form-stacked">
   <fieldset>
-    <ng-form name="challenge.form">
+    <ng-form name="challenge.form">{{challenge.file}}<a ng-file-select="ng-file-select" ng-model="challenge.file" class="pure-button">Select File</a>
       <label for="message" ng-show="challenge.form.message.$valid || challenge.form.message.$pristine">message:</label>
       <label for="message" ng-show="challenge.form.message.$invalid &amp;&amp; challenge.form.message.$dirty" class="error">message is required:</label>
       <input name="message" data-ng-model="challenge.message" required=""/>
