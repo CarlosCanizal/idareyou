@@ -12,6 +12,7 @@
 
     var  Dare  = parse.newParseResource(headers.keys , 'Dare');
     var  Response  = parse.newParseResource(headers.keys , 'Invitation');
+    var  Message  = parse.newParseResource(headers.keys , 'Message');
     var  Invite = parse.newCloudCodeResource(headers.keys);
     
     var dare = {
@@ -19,7 +20,8 @@
       get: get,
       send: send,
       getByKey: getByKey,
-      response: response
+      response: response,
+      sendMessage: sendMessage
     };
 
     return dare;
@@ -51,8 +53,13 @@
     }
 
     function response(invitation, response){
-      alert(invitation.objectId);
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
+    }
+
+    function sendMessage(challenge, message){
+      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},message:message};
+      console.log(params);
+      return Message.save(params).$promise;
     }
   }
 })();

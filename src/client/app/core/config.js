@@ -17,6 +17,18 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       controller: 'Dare',
       controllerAs: 'dare'
     })
+    .state('challenge', {
+      url:'/challenge/:challengeId',
+      templateUrl: 'app/dare/show/challenge.show.template.html',
+      controller: 'Show',
+      controllerAs: 'challenge',
+      resolve: {
+        info: function(dareApi, $stateParams){
+          var challengeId = $stateParams.challengeId;
+          return dareApi.get(challengeId);
+        }
+      }
+    })
     .state('invite', {
       url:'/invite/:dareId',
       templateUrl: 'app/dare/invite/invite.template.html',

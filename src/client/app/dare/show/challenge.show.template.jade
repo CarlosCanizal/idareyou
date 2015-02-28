@@ -1,0 +1,15 @@
+h1
+  |Show
+|{{challenge.info}}
+h1
+  |Updates
+form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
+  fieldset
+    ng-form(name="challenge.form")
+      label(for="message", ng-show="challenge.form.message.$valid || challenge.form.message.$pristine")
+        | message:
+      label.error(for="message", ng-show="challenge.form.message.$invalid && challenge.form.message.$dirty")
+        | message is required:
+      input(name="message", data-ng-model="challenge.message", required="")
+a.pure-button.pure-button-primary(data-ng-click="challenge.sendMessage()")
+  |Send Message
