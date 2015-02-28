@@ -5,11 +5,11 @@
   .module('app.dare')
   .controller('Invite', Invite);
 
-  Invite.$inject = ['$scope', 'dareApi', 'query'];
+  Invite.$inject = ['$scope', 'dareApi', 'info'];
 
-  function Invite($scope, dareApi, query) {
+  function Invite($scope, dareApi, info) {
     var dare = this;
-    dare.info  = query.results[0];
+    dare.info  = info;
     
 
     dare.send = function(){

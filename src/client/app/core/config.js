@@ -23,9 +23,21 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       controller: 'Invite',
       controllerAs: 'dare',
       resolve: {
-        query: function(dareApi, $stateParams){
+        info: function(dareApi, $stateParams){
           var dareId = $stateParams.dareId;
-          return dareApi.get($stateParams.objectId);
+          return dareApi.get(dareId);
+        }
+      }
+    })
+    .state('response', {
+      url:'/response/:key',
+      templateUrl: 'app/dare/response/response.template.html',
+      controller: 'Response',
+      controllerAs: 'response',
+      resolve: {
+        invitation: function(dareApi, $stateParams){
+          var key = $stateParams.key;
+          return dareApi.getByKey(key);
         }
       }
     });
