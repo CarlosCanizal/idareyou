@@ -10,6 +10,14 @@
   function Show($scope,$state, dareApi, info) {
     var challenge = this;
     challenge.info = info;
+    challenge.message = [];
+
+    dareApi.getMessages(challenge.info.objectId).then(function(result){
+      challenge.messages = result.results;
+    },function(error){
+      console.error(error);
+    });
+
 
     challenge.sendMessage = function(){
       if(challenge.form.$valid){

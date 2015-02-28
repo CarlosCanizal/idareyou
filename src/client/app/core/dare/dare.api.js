@@ -21,7 +21,8 @@
       send: send,
       getByKey: getByKey,
       response: response,
-      sendMessage: sendMessage
+      sendMessage: sendMessage,
+      getMessages: getMessages
     };
 
     return dare;
@@ -60,6 +61,14 @@
       var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},message:message};
       console.log(params);
       return Message.save(params).$promise;
+    }
+
+    function getMessages(challengeId){
+      var where = {"dare":{"__type":"Pointer","className":"Dare","objectId":challengeId}};
+      return Message.query({
+              where : where,
+              order : 'createdAt'
+             }).$promise; 
     }
   }
 })();
