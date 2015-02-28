@@ -1,2 +1,12 @@
 h1
   |Invite
+form.pure-form.pure-form-stacked(name="form", novalidate="")
+  fieldset
+    ng-form(name="form")
+      label(for="email", ng-show="form.email.$valid || form.email.$pristine")
+        | Email:
+      label.error(for="email", ng-show="form.email.$invalid && form.email.$dirty")
+        | Email is required:
+      input(name="email", data-ng-model="dare.email", required="")
+    a.pure-button.pure-button-primary(data-ng-click="dare.send()")
+      | Dare

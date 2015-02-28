@@ -21,7 +21,7 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       url:'/invite/:dareId',
       templateUrl: 'app/dare/invite/invite.template.html',
       controller: 'Invite',
-      controllerAs: 'invite',
+      controllerAs: 'dare',
       resolve: {
         query: function(dareApi, $stateParams){
           var dareId = $stateParams.dareId;

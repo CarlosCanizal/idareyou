@@ -8,9 +8,19 @@
   Invite.$inject = ['$scope', 'dareApi', 'query'];
 
   function Invite($scope, dareApi, query) {
-    var invite = this;
-    invite.dare  = query.results[0];
-    console.log(invite.dare);
+    var dare = this;
+    dare.info  = query.results[0];
+    
+
+    dare.send = function(){
+      dareApi.send(dare.info,dare.email).then(function(result){
+        console.log(result);
+      },function(error){
+        console.log(error);
+      });
+    }
+
+
   }
 
 

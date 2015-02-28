@@ -11,11 +11,12 @@
   function dareApi($resource, $q, $upload, parse, headers) {
 
     var  Dare  = parse.newParseResource(headers.keys , 'Dare');
+    var Invite = parse.newCloudCodeResource(headers.keys);
     
-
     var dare = {
       save : save,
-      get: get
+      get: get,
+      send: send
     };
 
     return dare;
@@ -36,6 +37,10 @@
 
     function get(objectId){
       return Dare.get({objectId:objectId}).$promise;
+    }
+
+    function send(dare, email){
+      return Invite.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
     }
   }
 })();

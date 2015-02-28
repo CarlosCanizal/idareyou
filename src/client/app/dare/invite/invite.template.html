@@ -1,2 +1,11 @@
 
 <h1>Invite</h1>
+<form name="form" novalidate="" class="pure-form pure-form-stacked">
+  <fieldset>
+    <ng-form name="form">
+      <label for="email" ng-show="form.email.$valid || form.email.$pristine">Email:</label>
+      <label for="email" ng-show="form.email.$invalid &amp;&amp; form.email.$dirty" class="error">Email is required:</label>
+      <input name="email" data-ng-model="dare.email" required=""/>
+    </ng-form><a data-ng-click="dare.send()" class="pure-button pure-button-primary">Dare</a>
+  </fieldset>
+</form>

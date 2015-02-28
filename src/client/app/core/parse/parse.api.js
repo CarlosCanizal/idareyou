@@ -101,6 +101,8 @@
           'save' : {method: 'POST', headers:headers},
           'get'  : {method: 'POST', headers:headers},
           'delete'  : {method: 'POST', headers:headers},
+          'send'  : {method: 'POST', headers:headers},
+
         }
       );
     }
