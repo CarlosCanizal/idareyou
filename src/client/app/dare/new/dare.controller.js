@@ -9,6 +9,7 @@
 
   function Dare($scope,$state, dareApi) {
     var dare = this;
+    var shell = $scope.shell;
 
     dare.saveDare = function(){
       if($scope.form.$valid){
