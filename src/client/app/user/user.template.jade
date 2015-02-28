@@ -1,0 +1,18 @@
+h1
+  |Login
+form.pure-form.pure-form-stacked(name="loginForm", novalidate="")
+  fieldset
+    label(for="username", ng-show="loginForm.username.$valid || loginForm.username.$pristine")
+      | Email:
+    label.error(for="username", ng-show="loginForm.username.$invalid && loginForm.username.$dirty")
+      | Invalid Email:
+    input.pure-input-1#username(name="username", type="email", data-ng-model="user.info.username", required="")
+      
+
+    label(for="password", ng-show="loginForm.password.$valid || loginForm.password.$pristine")
+      | Password:
+    label.error(for="password", ng-show="loginForm.password.$invalid && loginForm.password.$dirty")
+      | Password:
+    input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
+  a.pure-button.pure-button-primary(ng-click="user.login()")
+    | Login

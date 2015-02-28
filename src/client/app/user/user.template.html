@@ -1,0 +1,12 @@
+
+<h1>Login</h1>
+<form name="loginForm" novalidate="" class="pure-form pure-form-stacked">
+  <fieldset>
+    <label for="username" ng-show="loginForm.username.$valid || loginForm.username.$pristine">Email:</label>
+    <label for="username" ng-show="loginForm.username.$invalid &amp;&amp; loginForm.username.$dirty" class="error">Invalid Email:</label>
+    <input id="username" name="username" type="email" data-ng-model="user.info.username" required="" class="pure-input-1"/>
+    <label for="password" ng-show="loginForm.password.$valid || loginForm.password.$pristine">Password:</label>
+    <label for="password" ng-show="loginForm.password.$invalid &amp;&amp; loginForm.password.$dirty" class="error">Password:</label>
+    <input id="password" name="password" type="password" data-ng-model="user.info.password" required="" class="pure-input-1"/>
+  </fieldset><a ng-click="user.login()" class="pure-button pure-button-primary">Login</a>
+</form>

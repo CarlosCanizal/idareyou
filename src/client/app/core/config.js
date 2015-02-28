@@ -11,6 +11,12 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       url:'/',
       templateUrl: 'app/layout/shell.html'
     })
+    .state('user', {
+      url:'/user',
+      templateUrl: 'app/user/user.template.html',
+      controller: 'User',
+      controllerAs: 'user'
+    })
     .state('newDare', {
       url:'/dare/new',
       templateUrl: 'app/dare/new/dare.new.template.html',
