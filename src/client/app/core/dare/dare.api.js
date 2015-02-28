@@ -23,7 +23,8 @@
       response: response,
       sendMessage: sendMessage,
       getMessages: getMessages,
-      saveInvitation: saveInvitation
+      saveInvitation: saveInvitation,
+      getUsers: getUsers
     };
 
     return dare;
@@ -72,7 +73,6 @@
     }
 
     function response(invitation, response){
-      alert(invitation.objectId);
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
     }
 
@@ -89,6 +89,30 @@
               where : where,
               order : 'createdAt'
              }).$promise; 
+    }
+
+    function getUsers(challengeId){
+      var deferred = $q.defer();
+      var where = {"dare":{"__type":"Pointer","className":"Dare","objectId":challengeId}};
+      Response.query({
+                  where : where,
+                  order : 'createdAt'
+                }).$promise.then(function(result){
+                  var users = result.results;
+                  var acceptedUsers = [];
+                  var denyUsers = [];
+                  angular.forEach(users,function(user){
+                    if(user.accepted)
+                      acceptedUsers.push(user);
+                    else
+                      denyUsers.push(user);
+                  });
+                  deferred.resolve({acceptedUsers:acceptedUsers,denyUsers:denyUsers});
+                },function(error){
+                  deferred.reject(error);
+                });
+      return deferred.promise;
+
     }
   }
 })();
