@@ -9,6 +9,9 @@
       <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
       <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
       <input name="description" data-ng-model="dare.info.description" required=""/>
+      <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
+      <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
+      <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
     </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary">Create</a>
   </fieldset>
 </form>
