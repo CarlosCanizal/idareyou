@@ -13,7 +13,7 @@
     var  Dare  = parse.newParseResource(headers.keys , 'Dare');
     var  Response  = parse.newParseResource(headers.keys , 'Invitation');
     var  Message  = parse.newParseResource(headers.keys , 'Message');
-    var  Invite = parse.newCloudCodeResource(headers.keys);
+    var  Cloud = parse.newCloudCodeResource(headers.keys);
     
     var dare = {
       save : save,
@@ -26,7 +26,8 @@
       saveInvitation: saveInvitation,
       getUsers: getUsers,
       upload: upload,
-      finishIt: finishIt
+      finishIt: finishIt,
+      getAll: getAll
     };
 
     return dare;
@@ -66,8 +67,14 @@
       return Dare.get({objectId:objectId}).$promise;
     }
 
+    function getAll(email){
+      
+      var where = {email:email};
+      return Response.query({where : where, order:'createdAt'}).$promise;
+    }
+
     function send(dare, email){
-      return Invite.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
+      return Cloud.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
     }
 
     function saveInvitation(user, dare){
@@ -80,7 +87,10 @@
     }
 
     function response(invitation, response){
-     return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
+      var ownerId = invitation.dare.owner.objectId;
+      return Response.update({objectId:invitation.objectId, accepted: response}).$promise.then(function(){
+        return Cloud.send({ownerId:ownerId,challengeResponse:response,'function':'sendResponse'}).$promise;
+      }); 
     }
 
     function sendMessage(user,challenge, message, file){
