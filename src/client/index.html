@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="bower_components/pure/pure-min.css">
     <link rel="stylesheet" href="bower_components/pure/grids-responsive-min.css">
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="common/css/main.css"><!-- endbuild --> 
+    <link rel="stylesheet" href="common/css/main.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,100" type="text/css"><!-- endbuild --> 
   </head>
   <body>
-    <div data-ng-controller="Shell as shell">
-      <h1>I Dare YOU!</h1>
-      <ui-view></ui-view>
+    <div data-ng-controller="Shell as shell" class="pure-g">
+      <div class="pure-u-1">
+        <h1 class="main">challenge </h1>
+        <ui-view></ui-view>
+      </div>
     </div><!-- build:js --> 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

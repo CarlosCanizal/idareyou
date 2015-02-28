@@ -1,17 +1,27 @@
 
-<h1>New Dare</h1>
-<form name="form" novalidate="" class="pure-form pure-form-stacked">
-  <fieldset>
-    <ng-form name="form">{{image}}<a ng-file-select="ng-file-select" ng-model="dare.file" class="pure-button">Select File</a>
-      <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
-      <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
-      <input name="name" data-ng-model="dare.info.name" required=""/>
-      <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
-      <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
-      <input name="description" data-ng-model="dare.info.description" required=""/>
-      <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
-      <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
-      <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
-    </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary">Create</a>
-  </fieldset>
-</form>
+<div class="pure-g">
+  <div class="pure-u-1">
+    <div class="form-container">
+      <h1 class="title">New Challenge</h1>
+      <form name="form" novalidate="" class="pure-form pure-form-stacked">
+        <fieldset>
+          <ng-form name="form">
+            <div class="placeholder">Placeholder Image</div><a ng-file-select="ng-file-select" ng-model="dare.file" class="pure-button">Select File</a>
+            <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
+            <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
+            <input name="name" data-ng-model="dare.info.name" required=""/>
+            <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
+            <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
+            <textarea name="description" data-ng-model="dare.info.description" rows="5" required="" placeholder="Describe your challenge, what needs to be done in order to complete it."></textarea>
+            <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
+            <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
+            <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
+            <div class="pledge">
+              <p>The pledge is the minimum amount of money participants need to pay in order to perform the challenge.  Depending on the challenge, the winner takes all the pledges upon completion or the winners divide the pledges from the losers.</p>
+            </div>
+          </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary">Create</a>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

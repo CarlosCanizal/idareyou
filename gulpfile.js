@@ -12,7 +12,10 @@ gulp.task('watch', function() {
 gulp.task('sass', function () {
   return gulp.src(paths.sass)
     .pipe($.plumber())
-    .pipe($.sass({sourceComments:'normal'}))
+    .pipe($.sass({
+      sourceComments: 'normal',
+      indentedSyntax: true
+    }))
     .pipe($.autoprefixer('last 2 version'))
     .pipe(gulp.dest(function(file) {
       return file.base; 
