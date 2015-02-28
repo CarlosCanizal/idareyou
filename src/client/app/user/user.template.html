@@ -10,3 +10,24 @@
     <input id="password" name="password" type="password" data-ng-model="user.info.password" required="" class="pure-input-1"/>
   </fieldset><a ng-click="user.login()" class="pure-button pure-button-primary">Login</a>
 </form>
+<h1>Register</h1>
+<form name="registerForm" novalidate="" class="pure-form pure-form-stacked">
+  <fieldset>
+    <label for="username" ng-show="registerForm.username.$valid || registerForm.username.$pristine">Correo Electronico:</label>
+    <label for="username" ng-show="registerForm.username.$invalid &amp;&amp; registerForm.username.$dirty" class="error">Correo Electronico invalido:</label>
+    <div class="form-icon">
+      <input id="username" name="username" type="email" data-ng-model="user.new.username" required="" class="pure-input-1"/>
+    </div>
+    <label for="password" ng-show="((registerForm.password.$valid || registerForm.password.$pristine) || (!registerForm.password.$error.required  &amp;&amp; registerForm.password.$error.match &amp;&amp; registerForm.confirmPassword.$pristine)) &amp;&amp; !(registerForm.confirmPassword.$dirty &amp;&amp; registerForm.password.$error.required)">Contraseña</label>
+    <label for="password" ng-show="registerForm.password.$error.required &amp;&amp; (registerForm.password.$dirty || registerForm.confirmPassword.$dirty)" class="error">Contraseña requerida:</label>
+    <label for="password" ng-show="registerForm.confirmPassword.$dirty &amp;&amp; !registerForm.password.$error.required &amp;&amp; registerForm.password.$error.match &amp;&amp; registerForm.password.$dirty" class="error">Contraseña no coincide:</label>
+    <div class="form-icon">
+      <input id="password" name="password" type="password" data-ng-model="user.new.password" required="" password-match="passwordMatch" class="pure-input-1"/>
+    </div>
+    <label for="confirmPassword" ng-show="registerForm.confirmPassword.$valid || registerForm.confirmPassword.$pristine">Confirmar Contraseña:</label>
+    <label for="confirmPassword" ng-show="registerForm.confirmPassword.$error.required &amp;&amp; registerForm.confirmPassword.$dirty" class="error">Contraseña requerida:</label>
+    <div class="form-icon">
+      <input id="confirmPassword" name="confirmPassword" type="password" data-ng-model="passwordMatch" required="" class="pure-input-1"/>
+    </div>
+  </fieldset>
+</form><a ng-click="user.register()" class="pure-button pure-button-primary">Register</a>

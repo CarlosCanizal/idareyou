@@ -12,7 +12,6 @@
 
     user.login = function(){
       if($scope.loginForm.$valid){
-        alert();
         userApi.login(user.info).then(function(result){
           console.log(result);
           // user.store(user);
@@ -25,6 +24,20 @@
         $scope.loginForm.password.$setDirty();
       }
     };
+
+    user.register = function(){
+        if($scope.registerForm.$valid){
+          userApi.register(user.new).then(function(user){
+            console.log(user);
+            // scope.setUser(user);
+          },function(error){
+            console.error(error);
+          });
+        }else{
+          $scope.registerForm.username.$setDirty();
+          $scope.registerForm.password.$setDirty();
+        }
+    }
 
     user.store = function(userInfo){
       storage.set('user',userInfo);

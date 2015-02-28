@@ -16,3 +16,29 @@ form.pure-form.pure-form-stacked(name="loginForm", novalidate="")
     input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
   a.pure-button.pure-button-primary(ng-click="user.login()")
     | Login
+h1
+  |Register
+form.pure-form.pure-form-stacked(name="registerForm", novalidate="")
+  fieldset
+    label(for="username", ng-show="registerForm.username.$valid || registerForm.username.$pristine")
+      | Correo Electronico:
+    label.error(for="username", ng-show="registerForm.username.$invalid && registerForm.username.$dirty")
+      | Correo Electronico invalido:
+    .form-icon
+      input.pure-input-1#username(name="username", type="email", data-ng-model="user.new.username", required="")
+    label(for="password", ng-show="((registerForm.password.$valid || registerForm.password.$pristine) || (!registerForm.password.$error.required  && registerForm.password.$error.match && registerForm.confirmPassword.$pristine)) && !(registerForm.confirmPassword.$dirty && registerForm.password.$error.required)")
+      | Contraseña
+    label.error(for="password", ng-show="registerForm.password.$error.required && (registerForm.password.$dirty || registerForm.confirmPassword.$dirty)")
+      | Contraseña requerida:
+    label.error(for="password", ng-show="registerForm.confirmPassword.$dirty && !registerForm.password.$error.required && registerForm.password.$error.match && registerForm.password.$dirty")
+      | Contraseña no coincide:
+    .form-icon
+      input.pure-input-1#password(name="password", type="password" data-ng-model="user.new.password", required="", password-match="passwordMatch")
+    label(for="confirmPassword", ng-show="registerForm.confirmPassword.$valid || registerForm.confirmPassword.$pristine")
+      | Confirmar Contraseña:
+    label.error(for="confirmPassword", ng-show="registerForm.confirmPassword.$error.required && registerForm.confirmPassword.$dirty")
+      | Contraseña requerida:
+    .form-icon
+      input.pure-input-1#confirmPassword(name="confirmPassword", type="password", data-ng-model="passwordMatch", required="")
+a.pure-button.pure-button-primary(ng-click="user.register()")
+  |Register

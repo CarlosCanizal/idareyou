@@ -15,7 +15,8 @@
     var  User = parse.newUserResource(headers.keys);
 
     var factory = {
-      login: login
+      login: login,
+      register: register
     };
 
     return factory;
@@ -31,7 +32,17 @@
       return deferred.promise
     }
 
-    
+    function register(params) {
+      var deferred = $q.defer();
+      Register.save(params).$promise.then(function(user){
+        storage.set('user',user);
+        deferred.resolve(user);
+      },function(error){
+        deferred.reject(error);
+      });
+
+      return deferred.promise
+    }
 
   }
 })();
