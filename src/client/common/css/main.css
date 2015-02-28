@@ -1,0 +1,10 @@
+/* line 1, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
+html {
+  background: url(/common/img/ichallengebackground.jpg) no-repeat center center fixed;
+  background-size: cover; }
+
+/* line 9, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
+h1.main {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: #ffffff; }
