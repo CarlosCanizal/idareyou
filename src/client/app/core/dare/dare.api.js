@@ -51,6 +51,7 @@
     }
 
     function response(invitation, response){
+      alert(invitation.objectId);
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
     }
   }
