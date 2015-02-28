@@ -15,6 +15,7 @@
     challenge.hasAccepted =[];
     challenge.hasNotAccepted = [];
     challenge.users = [];
+    challenge.hasCompleted = [];
 
 
     dareApi.getUsers(challenge.info.objectId).then(function(result){
@@ -22,6 +23,7 @@
       challenge.users = result.all;
       challenge.hasAccepted = result.hasAccepted;
       challenge.hasNotAccepted = result.hasNotAccepted;
+      challenge.hasCompleted = result.hasCompleted;
     },function(error){
       console.log(error);
     });

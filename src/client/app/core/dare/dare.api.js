@@ -144,13 +144,18 @@
                   var users = result.results;
                   var hasAccepted = [];
                   var hasNotAccepted = [];
+                  var hasCompleted = [];
                   angular.forEach(users,function(user){
                     if(user.accepted)
                       hasAccepted.push(user);
                     else
                       hasNotAccepted.push(user);
+
+                    if(user.completed)
+                      hasCompleted.push(user);
+
                   });
-                  deferred.resolve({all:users,hasAccepted:hasAccepted,hasNotAccepted:hasNotAccepted});
+                  deferred.resolve({all:users,hasAccepted:hasAccepted,hasNotAccepted:hasNotAccepted, hasCompleted:hasCompleted});
                 },function(error){
                   deferred.reject(error);
                 });
