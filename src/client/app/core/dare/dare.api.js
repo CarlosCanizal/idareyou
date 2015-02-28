@@ -68,7 +68,7 @@
     }
 
     function getAll(email){
-      alert(email);
+      
       var where = {email:email};
       return Response.query({where : where, order:'createdAt'}).$promise;
     }
