@@ -12,13 +12,16 @@
     var challenge = this;
     challenge.info = info;
     challenge.messages = [];
-    challenge.haveAccepted =[];
-    challenge.haveNotAccepted = [];
+    challenge.hasAccepted =[];
+    challenge.hasNotAccepted = [];
+    challenge.users = [];
 
 
     dareApi.getUsers(challenge.info.objectId).then(function(result){
-      challenge.haveAccepted = result.acceptedUsers;
-      challenge.haveNotAccepted = result.denyUsers;
+      console.log(result);
+      challenge.users = result.all;
+      challenge.hasAccepted = result.hasAccepted;
+      challenge.hasNotAccepted = result.hasNotAccepted;
     },function(error){
       console.log(error);
     });

@@ -99,15 +99,15 @@
                   order : 'createdAt'
                 }).$promise.then(function(result){
                   var users = result.results;
-                  var acceptedUsers = [];
-                  var denyUsers = [];
+                  var hasAccepted = [];
+                  var hasNotAccepted = [];
                   angular.forEach(users,function(user){
                     if(user.accepted)
-                      acceptedUsers.push(user);
+                      hasAccepted.push(user);
                     else
-                      denyUsers.push(user);
+                      hasNotAccepted.push(user);
                   });
-                  deferred.resolve({acceptedUsers:acceptedUsers,denyUsers:denyUsers});
+                  deferred.resolve({all:users,hasAccepted:hasAccepted,hasNotAccepted:hasNotAccepted});
                 },function(error){
                   deferred.reject(error);
                 });
