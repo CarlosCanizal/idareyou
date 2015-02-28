@@ -22,15 +22,18 @@
       getByKey: getByKey,
       response: response,
       sendMessage: sendMessage,
-      getMessages: getMessages
+      getMessages: getMessages,
+      saveInvitation: saveInvitation
     };
 
     return dare;
 
     function save(user, params, file){
+      var deferred = $q.defer();
+      var dareObj;
       file = file[0];
       headers.keys['Content-Type'] = file.type;
-      return $upload.upload({
+      $upload.upload({
         url:'https://api.parse.com/1/files/'+file.name,
         method: 'POST',
         headers: headers.keys,
@@ -39,7 +42,16 @@
         params['image'] = image.data;
         params['owner'] = {"__type":"Pointer",className:"_User","objectId":user.objectId};
         return Dare.save(params).$promise;
+      }).then(function(result){
+        dareObj = result;
+        return saveInvitation(user, dareObj);
+      }).then(function(){
+        deferred.resolve(dareObj);
+      },function(error){
+        deferred.reject(error);
       });
+
+      return deferred.promise;
     }
 
     function get(objectId){
@@ -50,11 +62,17 @@
       return Invite.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
     }
 
+    function saveInvitation(user, dare){
+      var params = {dare: {"__type":"Pointer",className:"Dare","objectId":dare.objectId}, email: user.username, accepted:true }
+      return Response.save(params).$promise;
+    }
+
     function getByKey(key){
-      return Response.get({key:key, include:'dare'}).$promise;
+      return Response.get({where:{key:key}, include:'dare'}).$promise;
     }
 
     function response(invitation, response){
+      alert(invitation.objectId);
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
     }
 
