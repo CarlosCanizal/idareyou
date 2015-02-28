@@ -12,13 +12,15 @@
 
     dare.saveDare = function(){
       if($scope.form.$valid){
-        dareApi.getAll().then(function(result){
+        console.log(dare.file);
+        dareApi.save(dare.info, dare.file).then(function(result){
           console.log(result);
         },function(error){
           console.log(error);
         })
       }
     }
+
   }
 
 

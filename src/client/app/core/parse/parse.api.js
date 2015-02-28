@@ -16,6 +16,7 @@
       newCloudCodeResource: newCloudCodeResource,
       newLoginResource: newLoginResource,
       newUserResource: newUserResource,
+      newUploadResource : newUploadResource
     };
 
     return factory;
@@ -27,6 +28,21 @@
         },
         { 
           'login':    {method:'GET', headers: headers}
+        }
+      );
+    }
+
+    function newUploadResource(headers, file) { 
+      console.log(file);
+      return $resource(
+        'https://api.parse.com/1/files/'+file.name,
+        {
+          file: file,
+          contentType: false,
+          processData: false
+        },
+        { 
+          'upload':    {method:'POST', headers: headers, 'content-type':file.type}
         }
       );
     }

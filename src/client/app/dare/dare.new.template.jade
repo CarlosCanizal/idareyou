@@ -3,6 +3,9 @@ h1
 form.pure-form.pure-form-stacked(name="form", novalidate="")
   fieldset
       ng-form(name="form")
+        |{{image}}
+        a(class="pure-button" ng-file-select ng-model="dare.file")
+          |Select File
         label(for="name", ng-show="form.name.$valid || form.name.$pristine")
           | Name:
         label.error(for="name", ng-show="form.name.$invalid && form.name.$dirty")

@@ -2,7 +2,7 @@
 <h1>New Dare</h1>
 <form name="form" novalidate="" class="pure-form pure-form-stacked">
   <fieldset>
-    <ng-form name="form">
+    <ng-form name="form">{{image}}<a ng-file-select="ng-file-select" ng-model="dare.file" class="pure-button">Select File</a>
       <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
       <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
       <input name="name" data-ng-model="dare.info.name" required=""/>
