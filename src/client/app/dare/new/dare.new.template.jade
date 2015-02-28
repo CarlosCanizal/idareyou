@@ -1,25 +1,31 @@
-h1
-  |New Dare
-form.pure-form.pure-form-stacked(name="form", novalidate="")
-  fieldset
-    ng-form(name="form")
-      |{{image}}
-      a(class="pure-button" ng-file-select ng-model="dare.file")
-        |Select File
-      label(for="name", ng-show="form.name.$valid || form.name.$pristine")
-        | Name:
-      label.error(for="name", ng-show="form.name.$invalid && form.name.$dirty")
-        | Name is required:
-      input(name="name", data-ng-model="dare.info.name", required="")
-      label(for="description", ng-show="form.description.$valid || form.description.$pristine")
-        | Description:
-      label.error(for="description", ng-show="form.description.$invalid && form.description.$dirty")
-        | Description is required:
-      input(name="description", data-ng-model="dare.info.description", required="")
-      label(for="pledge", ng-show="form.pledge.$valid || form.pledge.$pristine")
-        | Pledge:
-      label.error(for="pledge", ng-show="form.pledge.$invalid && form.pledge.$dirty")
-        | Pledge is required:
-      input(name="pledge", type="number", data-ng-model="dare.info.pledge", required="")
-    a.pure-button.pure-button-primary(data-ng-click="dare.saveDare()")
-      |Create
+.pure-g
+  .pure-u-1
+    .form-container
+      h1.title
+        |New Challenge
+      form.pure-form.pure-form-stacked(name='form', novalidate='')
+        fieldset
+          ng-form(name='form')
+            .placeholder
+              | Placeholder Image
+            a(class='pure-button' ng-file-select ng-model='dare.file')
+              |Select File
+            label(for='name', ng-show='form.name.$valid || form.name.$pristine')
+              | Name:
+            label.error(for='name', ng-show='form.name.$invalid && form.name.$dirty')
+              | Name is required:
+            input(name='name', data-ng-model='dare.info.name', required='')
+            label(for='description', ng-show='form.description.$valid || form.description.$pristine')
+              | Description:
+            label.error(for='description', ng-show='form.description.$invalid && form.description.$dirty')
+              | Description is required:
+            textarea(name='description', data-ng-model='dare.info.description', rows=5, required='', placeholder='Describe your challenge, what needs to be done in order to complete it.')
+            label(for='pledge', ng-show='form.pledge.$valid || form.pledge.$pristine')
+              | Pledge:
+            label.error(for='pledge', ng-show='form.pledge.$invalid && form.pledge.$dirty')
+              | Pledge is required:
+            input(name='pledge', type='number', data-ng-model='dare.info.pledge', required='')
+            .pledge
+              p The pledge is the minimum amount of money participants need to pay in order to perform the challenge.  Depending on the challenge, the winner takes all the pledges upon completion or the winners divide the pledges from the losers.
+          a.pure-button.pure-button-primary(data-ng-click='dare.saveDare()')
+            |Create

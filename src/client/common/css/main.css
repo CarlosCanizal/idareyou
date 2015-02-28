@@ -3,8 +3,17 @@ html {
   background: url(/common/img/ichallengebackground.jpg) no-repeat center center fixed;
   background-size: cover; }
 
-/* line 9, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
+/* line 8, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
+body {
+  color: #ffffff; }
+
+/* line 12, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
 h1.main {
   font-family: 'Raleway', sans-serif;
   text-align: center;
   color: #ffffff; }
+
+/* line 17, /home/juanmarinbear/idareyou/src/client/common/css/main.sass */
+.form-container {
+  margin: 0 auto;
+  width: 350px; }
