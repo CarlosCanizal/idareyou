@@ -6,6 +6,7 @@
     'restangular',
     'angularFileUpload',
     'app.core',
+    'app.storage',
     'app.layout',
     'app.dare'
 

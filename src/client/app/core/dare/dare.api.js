@@ -21,23 +21,38 @@
       send: send,
       getByKey: getByKey,
       response: response,
-      sendMessage: sendMessage
+      sendMessage: sendMessage,
+      getMessages: getMessages,
+      saveInvitation: saveInvitation,
+      getUsers: getUsers
     };
 
     return dare;
 
-    function save(params, file){
+    function save(user, params, file){
+      var deferred = $q.defer();
+      var dareObj;
       file = file[0];
       headers.keys['Content-Type'] = file.type;
-      return $upload.upload({
+      $upload.upload({
         url:'https://api.parse.com/1/files/'+file.name,
         method: 'POST',
         headers: headers.keys,
         file: file
       }).then(function(image){
         params['image'] = image.data;
+        params['owner'] = {"__type":"Pointer",className:"_User","objectId":user.objectId};
         return Dare.save(params).$promise;
+      }).then(function(result){
+        dareObj = result;
+        return saveInvitation(user, dareObj);
+      }).then(function(){
+        deferred.resolve(dareObj);
+      },function(error){
+        deferred.reject(error);
       });
+
+      return deferred.promise;
     }
 
     function get(objectId){
@@ -48,18 +63,56 @@
       return Invite.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
     }
 
+    function saveInvitation(user, dare){
+      var params = {dare: {"__type":"Pointer",className:"Dare","objectId":dare.objectId}, email: user.username, accepted:true }
+      return Response.save(params).$promise;
+    }
+
     function getByKey(key){
-      return Response.get({key:key, include:'dare'}).$promise;
+      return Response.get({where:{key:key}, include:'dare'}).$promise;
     }
 
     function response(invitation, response){
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
     }
 
-    function sendMessage(challenge, message){
-      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},message:message};
-      console.log(params);
+    function sendMessage(user,challenge, message){
+      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},
+                    user:{"__type":"Pointer",className:"_User","objectId":user.objectId},
+                    message:message};
       return Message.save(params).$promise;
+    }
+
+    function getMessages(challengeId){
+      var where = {"dare":{"__type":"Pointer","className":"Dare","objectId":challengeId}};
+      return Message.query({
+              where : where,
+              order : 'createdAt'
+             }).$promise; 
+    }
+
+    function getUsers(challengeId){
+      var deferred = $q.defer();
+      var where = {"dare":{"__type":"Pointer","className":"Dare","objectId":challengeId}};
+      Response.query({
+                  where : where,
+                  order : 'createdAt'
+                }).$promise.then(function(result){
+                  var users = result.results;
+                  var acceptedUsers = [];
+                  var denyUsers = [];
+                  angular.forEach(users,function(user){
+                    if(user.accepted)
+                      acceptedUsers.push(user);
+                    else
+                      denyUsers.push(user);
+                  });
+                  deferred.resolve({acceptedUsers:acceptedUsers,denyUsers:denyUsers});
+                },function(error){
+                  deferred.reject(error);
+                });
+      return deferred.promise;
+
     }
   }
 })();

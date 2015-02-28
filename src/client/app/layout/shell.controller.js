@@ -5,13 +5,12 @@
     .module('app.layout')
     .controller('Shell',Shell);
 
-  Shell.$inject = ['$scope','$state'];
+  Shell.$inject = ['$scope','$state','userApi'];
 
-  function Shell($scope, $state){
+  function Shell($scope, $state, userApi){
     // jshint validthis: true 
     var shell = this;
-
-   
+    shell.user = userApi.currentUser();
     
   }
 
