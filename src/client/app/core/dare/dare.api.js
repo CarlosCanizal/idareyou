@@ -58,9 +58,10 @@
      return Response.update({objectId:invitation.objectId, accepted: response}).$promise; 
     }
 
-    function sendMessage(challenge, message){
-      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},message:message};
-      console.log(params);
+    function sendMessage(user,challenge, message){
+      var params = {dare:{"__type":"Pointer",className:"Dare","objectId":challenge.objectId},
+                    user:{"__type":"Pointer",className:"_User","objectId":user.objectId},
+                    message:message};
       return Message.save(params).$promise;
     }
 

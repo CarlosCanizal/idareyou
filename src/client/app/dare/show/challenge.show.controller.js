@@ -8,9 +8,10 @@
   Show.$inject = ['$scope','$state', 'dareApi', 'info'];
 
   function Show($scope,$state, dareApi, info) {
+    var shell = $scope.shell;
     var challenge = this;
     challenge.info = info;
-    challenge.message = [];
+    challenge.messages = [];
 
     dareApi.getMessages(challenge.info.objectId).then(function(result){
       challenge.messages = result.results;
@@ -21,8 +22,8 @@
 
     challenge.sendMessage = function(){
       if(challenge.form.$valid){
-         dareApi.sendMessage(challenge.info,challenge.message).then(function(result){
-          console.log(result);
+         dareApi.sendMessage(shell.user,challenge.info,challenge.message).then(function(result){
+          challenge.messages.push({objectId:result.objectId, message: challenge.message});
          },function(error){
           console.log(error);
          })
