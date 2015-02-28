@@ -13,7 +13,7 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
     })
     .state('newDare', {
       url:'/dare/new',
-      templateUrl: 'app/dare/dare.new.html',
+      templateUrl: 'app/dare/dare.new.template.html',
       controller: 'Dare',
       controllerAs: 'dare'
     });

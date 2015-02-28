@@ -1,0 +1,14 @@
+
+<h1>New Dare</h1>
+<form name="form" novalidate="" class="pure-form pure-form-stacked">
+  <fieldset>
+    <ng-form name="form">
+      <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
+      <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
+      <input name="name" data-ng-model="dare.info.name" required=""/>
+      <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
+      <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
+      <input name="description" data-ng-model="dare.info.description" required=""/>
+    </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary">Create</a>
+  </fieldset>
+</form>

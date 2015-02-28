@@ -5,10 +5,22 @@
   .module('app.dare')
   .controller('Dare', Dare);
 
-  Dare.$inject = ['$scope'];
+  Dare.$inject = ['$scope', 'dareApi'];
 
-  function Dare($scope) {
-    Dare = this;
+  function Dare($scope, dareApi) {
+    var dare = this;
+
+    dare.saveDare = function(){
+      if($scope.form.$valid){
+        dareApi.getAll().then(function(result){
+          console.log(result);
+        },function(error){
+          console.log(error);
+        })
+      }
+    }
   }
+
+
 
 })();
