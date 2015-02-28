@@ -1,0 +1,17 @@
+h1
+  |New Dare
+form.pure-form.pure-form-stacked(name="form", novalidate="")
+  fieldset
+      ng-form(name="form")
+        label(for="name", ng-show="form.name.$valid || form.name.$pristine")
+          | Name:
+        label.error(for="name", ng-show="form.name.$invalid && form.name.$dirty")
+          | Name is required:
+        input(name="name", data-ng-model="dare.info.name", required="")
+        label(for="description", ng-show="form.description.$valid || form.description.$pristine")
+          | Description:
+        label.error(for="description", ng-show="form.description.$invalid && form.description.$dirty")
+          | Description is required:
+        input(name="description", data-ng-model="dare.info.description", required="")
+      a.pure-button.pure-button-primary(data-ng-click="dare.saveDare()")
+        |Create

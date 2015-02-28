@@ -8,7 +8,15 @@
   Dare.$inject = ['$scope'];
 
   function Dare($scope) {
-    Dare = this;
+    var dare = this;
+
+    dare.saveDare = function(){
+      if($scope.form.$valid){
+        console.log(dare.info);
+      }
+    }
   }
+
+
 
 })();
