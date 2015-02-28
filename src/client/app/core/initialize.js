@@ -2,8 +2,9 @@ angular
 .module('app')
 .run(run);
 
-run.$inject = ['$rootScope', '$state',];
+run.$inject = ['$rootScope', '$state','parse'];
 
-function run($rootScope, $state) {
+function run($rootScope, $state, parse) {
+  
 }
 
