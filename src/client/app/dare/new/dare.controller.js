@@ -14,7 +14,7 @@
     dare.saveDare = function(){
       if($scope.form.$valid){
         console.log(dare.file);
-        dareApi.save(dare.info, dare.file).then(function(result){
+        dareApi.save(shell.user, dare.info, dare.file).then(function(result){
           $state.go('invite',{dareId:result.objectId});
         },function(error){
           console.log(error);

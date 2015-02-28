@@ -27,7 +27,7 @@
 
     return dare;
 
-    function save(params, file){
+    function save(user, params, file){
       file = file[0];
       headers.keys['Content-Type'] = file.type;
       return $upload.upload({
@@ -37,6 +37,7 @@
         file: file
       }).then(function(image){
         params['image'] = image.data;
+        params['owner'] = {"__type":"Pointer",className:"_User","objectId":user.objectId};
         return Dare.save(params).$promise;
       });
     }

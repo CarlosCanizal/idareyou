@@ -10,8 +10,7 @@
   function Shell($scope, $state, userApi){
     // jshint validthis: true 
     var shell = this;
-
-    shell.currentUser = userApi.currentUser();
+    shell.user = userApi.currentUser();
     
   }
 
