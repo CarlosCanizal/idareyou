@@ -26,7 +26,8 @@
       saveInvitation: saveInvitation,
       getUsers: getUsers,
       upload: upload,
-      finishIt: finishIt
+      finishIt: finishIt,
+      getAll: getAll
     };
 
     return dare;
@@ -64,6 +65,12 @@
 
     function get(objectId){
       return Dare.get({objectId:objectId}).$promise;
+    }
+
+    function getAll(email){
+      alert(email);
+      var where = {email:email};
+      return Response.query({where : where, order:'createdAt'}).$promise;
     }
 
     function send(dare, email){

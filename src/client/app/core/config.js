@@ -35,6 +35,12 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
         }
       }
     })
+    .state('challenges', {
+      url:'/challenges',
+      templateUrl: 'app/dare/list/challenges.template.html',
+      controller: 'Challenges',
+      controllerAs: 'challenges'
+    })
     .state('invite', {
       url:'/invite/:dareId',
       templateUrl: 'app/dare/invite/invite.template.html',
