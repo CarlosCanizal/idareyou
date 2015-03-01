@@ -5,6 +5,7 @@
     'ngAnimate',
     'restangular',
     'angularFileUpload',
+    'ngImgur',
     'app.core',
     'app.storage',
     'app.layout',

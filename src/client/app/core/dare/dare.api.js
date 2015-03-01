@@ -37,7 +37,9 @@
       var dareObj;
       file = file[0];
       this.upload(headers.keys, file).then(function(file){
-        params['image'] = file.data;
+        console.log(file.data);
+
+        params['image'] = {"__type": "File",'name':file.data.name};
         params['owner'] = {"__type":"Pointer",className:"_User","objectId":user.objectId};
         return Dare.save(params).$promise;
       }).then(function(result){
@@ -55,11 +57,11 @@
     function upload(headers, file){
       headers['Content-Type'] = file.type;
       console.log(headers);
-      return $upload.upload({
+      return $upload.http({
         url:'https://api.parse.com/1/files/'+file.name,
         method: 'POST',
         headers: headers,
-        file: file
+        data: file
       });
     }
 
