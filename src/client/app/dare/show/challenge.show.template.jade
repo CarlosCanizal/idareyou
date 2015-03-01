@@ -5,7 +5,7 @@
     .box-content
       .inner-space
         .challenge-image
-          img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+          img(data-ng-src="{{challenge.info.image.url}}")
         h1.align-center.accent
           |{{challenge.info.name}}
         h1
@@ -14,7 +14,7 @@
           .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.users")
             .padding-left-1
               .user-image.align-center
-                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+                img(gravatar-src="'{{user.email}}'" gravatar-size="100")
               h3
                 |{{user.email}}
         h1
@@ -23,7 +23,7 @@
           .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasAccepted")
             .padding-left-1
               .user-image.align-center
-                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+                img(gravatar-src="'{{user.email}}'" gravatar-size="100")
               h3
                 |{{user.email}}
         h1
@@ -32,7 +32,7 @@
           .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasNotAccepted")
             .padding-left-1
               .user-image.align-center
-                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+                img(gravatar-src="'{{user.email}}'" gravatar-size="100")
               h3
                 |{{user.email}}
         h1
@@ -41,7 +41,7 @@
           .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasCompleted")
             .padding-left-1
               .user-image.align-center
-                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+                img(gravatar-src="'{{user.email}}'" gravatar-size="100")
               h3
                 |{{user.email}}
         h1
@@ -51,7 +51,7 @@
           .pure-g
             .pure-u-1-8
               .message-avatar
-                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+                img(gravatar-src="'{{user.email}}'" gravatar-size="100")
             .message-text.pure-u-7-8
               |{{message.message}}
 
