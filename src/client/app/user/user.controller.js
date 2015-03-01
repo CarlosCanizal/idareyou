@@ -9,12 +9,15 @@
 
   function User($scope, $state, storage, userApi) {
     var user = this;
+    user.error = null;
 
     user.login = function(){
+      user.error = null;
       if($scope.loginForm.$valid){
         userApi.login(user.info).then(function(result){
           $state.go('challenges');
         },function(error){
+          user.error = {message:error.data.error};
           console.log(error);
         });
       }else{

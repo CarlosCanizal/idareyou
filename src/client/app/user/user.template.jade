@@ -29,6 +29,8 @@
             .align-center
               a.pure-button.pure-button-primary(ng-click="user.login()")
                 | Login
+            .error.align-center.margin-top-1(data-ng-if="user.error")
+              |{{user.error.message}}
       .pure-u-1.pure-u-sm-1-2
         .inner-space.border-left
           .align-center

@@ -18,6 +18,7 @@
             </div>
           </fieldset>
           <div class="align-center"><a ng-click="user.login()" class="pure-button pure-button-primary">Login</a></div>
+          <div data-ng-if="user.error" class="error align-center margin-top-1">{{user.error.message}}</div>
         </form>
       </div>
     </div>
