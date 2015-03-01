@@ -60,14 +60,14 @@
                 .message-text.message-text
                   |{{message.message}}
                   .message-avatar.message-avatar.message-avatar-left
-                    img(gravatar-src="'{{message.user.email}}'" gravatar-size="100")                  
+                    img(gravatar-src="'{{message.user.usernamel}}'" gravatar-size="100")                  
             .pure-g(data-ng-if="message.user.objectId != shell.user.objectId")
               .pure-u-1.pure-u-sm-1-2 
               .pure-u-1.pure-u-sm-1-2
                 .message-text.message-text-right
                   |{{message.message}}
                   .message-avatar.message-avatar-right
-                    img(gravatar-src="'{{message.user.email}}'" gravatar-size="100")
+                    img(gravatar-src="'{{message.user.username}}'" gravatar-size="100")
               
 
         h1

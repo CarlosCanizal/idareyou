@@ -91,7 +91,7 @@
     function response(invitation, response){
       var ownerId = invitation.dare.owner.objectId;
       return Response.update({objectId:invitation.objectId, accepted: response}).$promise.then(function(){
-        return Cloud.send({ownerId:ownerId,challengeResponse:response,'function':'sendResponse'}).$promise;
+        return Cloud.send({dare:dare,ownerId:ownerId,challengeResponse:response,'function':'sendResponse'}).$promise;
       }); 
     }
 

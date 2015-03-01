@@ -22,6 +22,16 @@
         <div class="align-center"><span class="title">Register</span></div>
         <form name="registerForm" novalidate="" class="pure-form pure-form-stacked">
           <fieldset>
+            <label for="name" ng-show="registerForm.name.$valid || registerForm.name.$pristine">Name:</label>
+            <label for="name" ng-show="registerForm.name.$invalid &amp;&amp; registerForm.name.$dirty" class="error">Invalid Name:</label>
+            <div class="form-icon">
+              <input id="name" name="name" data-ng-model="user.new.name" required="" class="pure-input-1"/>
+            </div>
+            <label for="lastname" ng-show="registerForm.lastname.$valid || registerForm.lastname.$pristine">Name:</label>
+            <label for="lastname" ng-show="registerForm.lastname.$invalid &amp;&amp; registerForm.lastname.$dirty" class="error">Invalid Name:</label>
+            <div class="form-icon">
+              <input id="lastname" name="lastname" data-ng-model="user.new.lastname" required="" class="pure-input-1"/>
+            </div>
             <label for="username" ng-show="registerForm.username.$valid || registerForm.username.$pristine">Email:</label>
             <label for="username" ng-show="registerForm.username.$invalid &amp;&amp; registerForm.username.$dirty" class="error">Invalid Email:</label>
             <div class="form-icon">

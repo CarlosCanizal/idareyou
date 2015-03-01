@@ -29,6 +29,19 @@
               | Register
           form.pure-form.pure-form-stacked(name="registerForm", novalidate="")
             fieldset
+
+              label(for="name", ng-show="registerForm.name.$valid || registerForm.name.$pristine")
+                | Name:
+              label.error(for="name", ng-show="registerForm.name.$invalid && registerForm.name.$dirty")
+                | Invalid Name:
+              .form-icon
+                input.pure-input-1#name(name="name", data-ng-model="user.new.name", required="")
+              label(for="lastname", ng-show="registerForm.lastname.$valid || registerForm.lastname.$pristine")
+                | Name:
+              label.error(for="lastname", ng-show="registerForm.lastname.$invalid && registerForm.lastname.$dirty")
+                | Invalid Name:
+              .form-icon
+                input.pure-input-1#lastname(name="lastname", data-ng-model="user.new.lastname", required="")
               label(for="username", ng-show="registerForm.username.$valid || registerForm.username.$pristine")
                 | Email:
               label.error(for="username", ng-show="registerForm.username.$invalid && registerForm.username.$dirty")
