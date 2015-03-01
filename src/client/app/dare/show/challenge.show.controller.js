@@ -44,8 +44,7 @@
           file = challenge.file[0];
 
          dareApi.sendMessage(shell.user,challenge.info,challenge.message,file).then(function(result){
-          console.log('done!');
-          challenge.messages.push({objectId:result.objectId, message: challenge.message,type:'message'});
+          challenge.messages.push({objectId:result.objectId, message: challenge.message,type:'message',user:{objectId:shell.user.objectId,username:shell.user.username}});
          },function(error){
           console.log(error);
          })

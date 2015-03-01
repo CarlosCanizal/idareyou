@@ -171,12 +171,34 @@ body
     width:100%
 
 .message-avatar
+  position:absolute
+  top:0.5rem  
   width:3rem
   height:3rem
   border-radius: 50%
   overflow: hidden
   img
     width:100%
+.message-text
+  position:relative
+  padding:1.5rem 1rem 1.5rem 4rem
+  background-color: rgba(255,255,255,0.7)
+  border-radius: 0.5rem
+  color: $text-primary-black
+  float:right
+  width:70%
+  margin-bottom: 1rem
+
+.message-avatar-left
+  left:0.5rem
+
+.message-avatar-right
+  right:0.5rem
+
+.message-text-right
+  text-align:right
+  padding:1.5rem 4rem 1.5rem 1rem
+
 
 .avatar
   width: 8rem
@@ -186,9 +208,28 @@ body
   margin: 0 auto
   img
     width: 100%
+.message-right
+  width: 100%
+
+.float-right
+  float:right
 
 form
   label
     padding:0.3rem 0
 
+.clearfix:after
+   visibility: hidden
+   display: block
+   font-size: 0
+   content: " "
+   clear: both
+   height: 0
+.clearfix 
+  display: inline-block
+
+* html .clearfix
+  height: 1%
+.clearfix
+  display: block
 

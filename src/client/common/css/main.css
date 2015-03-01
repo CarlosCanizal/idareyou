@@ -200,25 +200,80 @@ body {
 
 /* line 173, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-avatar {
+  position: absolute;
+  top: 0.5rem;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   overflow: hidden; }
-  /* line 178, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  /* line 180, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
   .message-avatar img {
     width: 100%; }
 
-/* line 181, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 182, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-text {
+  position: relative;
+  padding: 1.5rem 1rem 1.5rem 4rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.5rem;
+  color: rgba(0, 0, 0, 0.87);
+  float: right;
+  width: 70%;
+  margin-bottom: 1rem; }
+
+/* line 192, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-avatar-left {
+  left: 0.5rem; }
+
+/* line 195, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-avatar-right {
+  right: 0.5rem; }
+
+/* line 198, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-text-right {
+  text-align: right;
+  padding: 1.5rem 4rem 1.5rem 1rem; }
+
+/* line 203, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .avatar {
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto; }
-  /* line 187, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  /* line 209, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
   .avatar img {
     width: 100%; }
 
-/* line 191, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 211, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-right {
+  width: 100%; }
+
+/* line 214, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.float-right {
+  float: right; }
+
+/* line 218, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 form label {
   padding: 0.3rem 0; }
+
+/* line 221, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+/* line 228, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.clearfix {
+  display: inline-block; }
+
+/* line 231, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+* html .clearfix {
+  height: 1%; }
+
+/* line 233, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.clearfix {
+  display: block; }

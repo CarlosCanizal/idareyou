@@ -142,6 +142,7 @@
       var where = {"dare":{"__type":"Pointer","className":"Dare","objectId":challengeId}};
       return Message.query({
               where : where,
+              include:'user',
               order : 'createdAt'
              }).$promise; 
     }
