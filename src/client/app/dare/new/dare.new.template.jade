@@ -27,5 +27,11 @@
               label.error(for="pledge", ng-show="form.pledge.$invalid && form.pledge.$dirty")
                 | Pledge is required:
               input(name="pledge", type="number", data-ng-model="dare.info.pledge", required="")
+
+              label(for="zip", ng-show="form.zip.$valid || form.zip.$pristine")
+                | ZIP:
+              label.error(for="zip", ng-show="form.zip.$invalid && form.zip.$dirty")
+                | ZIP is required:
+              input(name="zip", data-ng-model="dare.info.zip", required="")
             a.pure-button.pure-button-primary.margin-top-1(data-ng-click="dare.saveDare()")
               |Create

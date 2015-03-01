@@ -18,6 +18,9 @@
               <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
               <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
               <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
+              <label for="zip" ng-show="form.zip.$valid || form.zip.$pristine">ZIP:</label>
+              <label for="zip" ng-show="form.zip.$invalid &amp;&amp; form.zip.$dirty" class="error">ZIP is required:</label>
+              <input name="zip" data-ng-model="dare.info.zip" required=""/>
             </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary margin-top-1">Create</a>
           </fieldset>
         </form>
