@@ -11,14 +11,21 @@
                 | Email:
               label.error(for="username", ng-show="loginForm.username.$invalid && loginForm.username.$dirty")
                 | Invalid Email:
-              input.pure-input-1#username(name="username", type="email", data-ng-model="user.info.username", required="")
-                
+              .form-icon
+                input.pure-input-1#username(name="username", type="email", data-ng-model="user.info.username", required="")
+                i.fa.fa-dot-circle-o.medium-icon(ng-show="loginForm.username.$pristine")
+                i.fa.fa-check-circle-o.success.medium-icon(ng-show="loginForm.username.$valid && loginForm.username.$dirty")
+                i.fa.fa-times-circle-o.error.medium-icon(ng-show="loginForm.username.$invalid && loginForm.username.$dirty")
 
               label(for="password", ng-show="loginForm.password.$valid || loginForm.password.$pristine")
                 | Password:
               label.error(for="password", ng-show="loginForm.password.$invalid && loginForm.password.$dirty")
                 | Password:
-              input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
+              .form-icon
+                input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
+                i.fa.fa-dot-circle-o.medium-icon(ng-show="loginForm.password.$pristine")
+                i.fa.fa-check-circle-o.success.medium-icon(ng-show="loginForm.password.$valid && loginForm.password.$dirty")
+                i.fa.fa-times-circle-o.error.medium-icon(ng-show="loginForm.password.$invalid && loginForm.password.$dirty")
             .align-center
               a.pure-button.pure-button-primary(ng-click="user.login()")
                 | Login

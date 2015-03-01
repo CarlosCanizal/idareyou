@@ -10,6 +10,11 @@ $text-secondary-white: rgba(255,255,255,0.54);
 $text-disable-white: rgba(255,255,255,0.26);
 $dividers-white: rgba(255,255,255,0.12);
 
+$error-color: rgb(221, 81, 76)
+$success-color: rgb(28, 184, 65)
+$warning-color: #f57b00
+$loading-color: #666
+
 body
   font-family: 'raleway'
   color: $text-primary-white
@@ -232,4 +237,22 @@ form
   height: 1%
 .clearfix
   display: block
+
+.error
+  color:$error-color
+
+.success
+  color: $success-color
+
+.form-icon
+  position: relative
+  i.fa-dot-circle-o
+    color: $text-disable-black
+
+.medium-icon
+  font-size: 1.5rem
+  position: absolute
+  top: 0.4rem
+  right: 0.5rem
+  padding-left: 0.5rem
 

@@ -8,10 +8,14 @@
           <fieldset>
             <label for="username" ng-show="loginForm.username.$valid || loginForm.username.$pristine">Email:</label>
             <label for="username" ng-show="loginForm.username.$invalid &amp;&amp; loginForm.username.$dirty" class="error">Invalid Email:</label>
-            <input id="username" name="username" type="email" data-ng-model="user.info.username" required="" class="pure-input-1"/>
+            <div class="form-icon">
+              <input id="username" name="username" type="email" data-ng-model="user.info.username" required="" class="pure-input-1"/><i ng-show="loginForm.username.$pristine" class="fa fa-dot-circle-o medium-icon"></i><i ng-show="loginForm.username.$valid &amp;&amp; loginForm.username.$dirty" class="fa fa-check-circle-o success medium-icon"></i><i ng-show="loginForm.username.$invalid &amp;&amp; loginForm.username.$dirty" class="fa fa-times-circle-o error medium-icon"></i>
+            </div>
             <label for="password" ng-show="loginForm.password.$valid || loginForm.password.$pristine">Password:</label>
             <label for="password" ng-show="loginForm.password.$invalid &amp;&amp; loginForm.password.$dirty" class="error">Password:</label>
-            <input id="password" name="password" type="password" data-ng-model="user.info.password" required="" class="pure-input-1"/>
+            <div class="form-icon">
+              <input id="password" name="password" type="password" data-ng-model="user.info.password" required="" class="pure-input-1"/><i ng-show="loginForm.password.$pristine" class="fa fa-dot-circle-o medium-icon"></i><i ng-show="loginForm.password.$valid &amp;&amp; loginForm.password.$dirty" class="fa fa-check-circle-o success medium-icon"></i><i ng-show="loginForm.password.$invalid &amp;&amp; loginForm.password.$dirty" class="fa fa-times-circle-o error medium-icon"></i>
+            </div>
           </fieldset>
           <div class="align-center"><a ng-click="user.login()" class="pure-button pure-button-primary">Login</a></div>
         </form>
