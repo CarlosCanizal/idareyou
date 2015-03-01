@@ -53,6 +53,9 @@
               .pure-u-1.pure-u-sm-1-2
                 .message-text.pure-u-1-3.message-text-left
                   |{{message.message}}
+                  .message-image
+                    video(data-ng-src="{{message.file.url}}",controls, data-ng-if="message.fileType=='video/quicktime'")
+                    img(data-ng-src="{{message.file.url}}", data-ng-if="message.fileType !='video/quicktime'")
                   .message-avatar.margin-right-1.message-avatar-left
                     img(gravatar-src="'{{message.user.username}}'" gravatar-size="100")
             
@@ -64,14 +67,11 @@
                   |{{message.message}}
                   .message-avatar.message-avatar-right
                     img(gravatar-src="'{{message.user.username}}'" gravatar-size="100")
-              
-
         h1
           |Send a message
         form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
           fieldset
             ng-form(name="challenge.form")
-              |{{challenge.file}}
               a(class="pure-button" ng-file-select ng-model="challenge.file")
                 |Select File
               label(for="message", ng-show="challenge.form.message.$valid || challenge.form.message.$pristine")
@@ -87,7 +87,6 @@
           form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
             fieldset
              ng-form(name="challenge.completed")
-                |{{challenge.proof}}
                 a(class="pure-button" ng-file-select ng-model="challenge.proof")
                   |Select File
                 label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")

@@ -5,10 +5,10 @@
   .module('app.dare')
   .controller('Show', Show);
 
-  Show.$inject = ['$scope','$state', 'dareApi', 'info'];
+  Show.$inject = ['$scope','$state', 'dareApi', 'info', '$sce'];
 
 
-  function Show($scope,$state, dareApi, info) {
+  function Show($scope,$state, dareApi, info, $sce) {
     
     var shell = $scope.shell;
     var challenge = this;
@@ -18,7 +18,6 @@
     challenge.hasNotAccepted = [];
     challenge.users = [];
     challenge.hasCompleted = [];
-
 
     dareApi.getUsers(challenge.info.objectId).then(function(result){      
       challenge.users = result.all;
@@ -31,8 +30,13 @@
 
 
     dareApi.getMessages(challenge.info.objectId).then(function(result){
-      console.log(result);
-      challenge.messages = result.results;
+      var messages = result.results;
+      angular.forEach(messages,function(message){
+        if(message.fileType == 'video/quicktime'){
+          message.file.url = $sce.trustAsResourceUrl(message.file.url);
+        }
+        challenge.messages.push(message);
+      });
     },function(error){
       console.error(error);
     });

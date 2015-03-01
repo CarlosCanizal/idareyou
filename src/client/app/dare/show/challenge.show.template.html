@@ -48,6 +48,9 @@
             <div class="pure-g">
               <div class="pure-u-1 pure-u-sm-1-2">
                 <div class="message-text pure-u-1-3 message-text-left">{{message.message}}
+                  <div class="message-image">
+                    <video data-ng-src="{{message.file.url}}" controls="controls" data-ng-if="message.fileType=='video/quicktime'"></video><img data-ng-src="{{message.file.url}}" data-ng-if="message.fileType !='video/quicktime'"/>
+                  </div>
                   <div class="message-avatar margin-right-1 message-avatar-left"><img gravatar-src="'{{message.user.username}}'" gravatar-size="100"/></div>
                 </div>
               </div>
@@ -67,7 +70,7 @@
         <h1>Send a message</h1>
         <form name="challenge.form" novalidate="" class="pure-form pure-form-stacked">
           <fieldset>
-            <ng-form name="challenge.form">{{challenge.file}}<a ng-file-select="ng-file-select" ng-model="challenge.file" class="pure-button">Select File</a>
+            <ng-form name="challenge.form"><a ng-file-select="ng-file-select" ng-model="challenge.file" class="pure-button">Select File</a>
               <label for="message" ng-show="challenge.form.message.$valid || challenge.form.message.$pristine">message:</label>
               <label for="message" ng-show="challenge.form.message.$invalid &amp;&amp; challenge.form.message.$dirty" class="error">message is required:</label>
               <input name="message" data-ng-model="challenge.message" required=""/>
@@ -78,7 +81,7 @@
         <div>
           <form name="challenge.completed" novalidate="" class="pure-form pure-form-stacked">
             <fieldset>
-              <ng-form name="challenge.completed">{{challenge.proof}}<a ng-file-select="ng-file-select" ng-model="challenge.proof" class="pure-button">Select File</a>
+              <ng-form name="challenge.completed"><a ng-file-select="ng-file-select" ng-model="challenge.proof" class="pure-button">Select File</a>
                 <label for="message" ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine">message:</label>
                 <label for="message" ng-show="challenge.completed.message.$invalid &amp;&amp; challenge.completed.message.$dirty" class="error">message is required:</label>
                 <input name="message" data-ng-model="challenge.completedMessage" required=""/>

@@ -37,7 +37,6 @@
       var dareObj;
       file = file[0];
       this.upload(headers.keys, file).then(function(file){
-        console.log(file.data);
 
         params['image'] = {"__type": "File",'name':file.data.name};
         params['owner'] = {"__type":"Pointer",className:"_User","objectId":user.objectId};
@@ -55,14 +54,20 @@
     }
 
     function upload(headers, file){
+      var deferred = $q.defer();
       headers['Content-Type'] = file.type;
-      console.log(headers);
-      return $upload.http({
+      $upload.http({
         url:'https://api.parse.com/1/files/'+file.name,
         method: 'POST',
         headers: headers,
         data: file
+      }).then(function(newFile){
+        newFile.data.type = file.type;
+        deferred.resolve(newFile);
+      },function(){
+        deferred.reject(file);
       });
+      return deferred.promise;
     }
 
     function get(objectId){
@@ -89,7 +94,6 @@
     }
 
     function response(invitation, response){
-      console.log('invitation',invitation.dare);
       var ownerId = invitation.dare.owner.objectId;
       return Response.update({email:invitation.email ,objectId:invitation.objectId, accepted: response}).$promise.then(function(){
         return Cloud.send({dare:invitation.dare,ownerId:ownerId,challengeResponse:response,challengee:invitation.email,'function':'sendResponse'}).$promise;
@@ -103,6 +107,8 @@
       if(file){
         return this.upload(headers.keys, file).then(function(file){
           params['file'] = {"__type": "File",'name':file.data.name};
+          params['fileType'] = file.data.type;
+          
           return Message.save(params).$promise;
         });
       }else{
@@ -126,11 +132,11 @@
           return Response.get({where:where}).$promise;
         }).then(function(result){
           var invitation = result.results[0];
-          console.log(invitation);
           return Response.update({objectId: invitation.objectId,completed:true}).$promise;
 
         }).then(function(){
           params['file'] = uploadFile.data;
+          params['fileType'] = uploadFile.data.type;
           return Message.save(params).$promise;
         });
       }else{
