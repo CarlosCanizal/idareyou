@@ -10,6 +10,7 @@
   function User($scope, $state, storage, userApi) {
     var user = this;
     user.error = null;
+    user.errorRegister = null;
 
     user.login = function(){
       user.error = null;
@@ -27,12 +28,14 @@
     };
 
     user.register = function(){
+        user.errorRegister = null;
         if($scope.registerForm.$valid){
           userApi.register(user.new).then(function(user){
             console.log(user);
             // scope.setUser(user);
           },function(error){
             console.error(error);
+            user.errorRegister = {message:error.data.error};
           });
         }else{
           $scope.registerForm.username.$setDirty();
