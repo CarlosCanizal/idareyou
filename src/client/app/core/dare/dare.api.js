@@ -70,7 +70,7 @@
     function getAll(email){
       
       var where = {email:email};
-      return Response.query({where : where, order:'createdAt'}).$promise;
+      return Response.query({where : where, order:'createdAt', include:'dare'}).$promise;
     }
 
     function send(dare, email){

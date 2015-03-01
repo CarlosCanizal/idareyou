@@ -1,6 +1,19 @@
-h1
-  |Dare info
-a.pure-button.pure-button-primary(data-ng-click="response.accept()")
-  |Accept
-a.pure-button(data-ng-click="response.decline()")
-  |Decline
+.canvas
+  .inner-space-2
+    h1
+      |Someone challenged you
+    .box-content
+      .inner-space
+        .align-center.accent.big-title
+          {{response.dare.name}}
+        p.align-center
+          |{{response.dare.description}}
+        p.align-center
+          |And won {{response.dare.pledge | currency}}
+        .pure-g
+          .pure-u-1.pure-u-sm-1-2.align-right
+            a.pure-button.pure-button-primary.big-button.margin-right-1(data-ng-click="response.accept()")
+              |Accept
+          .pure-u-1.pure-u-sm-1-2.align-left
+            a.pure-button.big-button.margin-left-1(data-ng-click="response.decline()")
+              |Decline

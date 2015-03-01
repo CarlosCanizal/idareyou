@@ -9,12 +9,25 @@ html(data-ng-app="app")
     link(rel="stylesheet", href="bower_components/pure/grids-responsive-min.css")
     link(rel="stylesheet", href="bower_components/components-font-awesome/css/font-awesome.min.css")
     link(rel="stylesheet", href="common/css/main.css")
+    link(href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css')
     <!-- endbuild --> 
   body
-    div(data-ng-controller="Shell as shell")
-      h1
-        | I Dare YOU!
+    .content(data-ng-controller="Shell as shell")
+      .header
+        .inner-space
+          span.title
+            |Challenge
+          nav.menu
+            a(data-ui-sref="challenges")
+              |My Challenges     
+            a(data-ui-sref="newDare")
+              |Challenge
+            a(data-ui-sref="user")
+              |Login
       ui-view
+    .opacity
+    .layer
+    
 
     <!-- build:js --> 
     script(src="bower_components/angular/angular.js")

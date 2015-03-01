@@ -1,45 +1,88 @@
-h1
-  |Show
-|{{challenge.info}}
-h1
-  |Users {{challenge.users.length}}
-|{{challenge.users}}
-h1
-  |Has Accepted {{challenge.hasAccepted.length}}
-|{{challenge.hasAccepted}}
-h1
-  |Has not Accepted  {{challenge.hasNotAccepted.length}}
-|{{challenge.hasNotAccepted}}
-h1
-  |Has Completed  {{challenge.hasCompleted.length}}
-|{{challenge.hasCompleted}}
-h1
-  |Messages |{{challenge.messages.length}}
-|{{challenge.messages}}
-form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
-  fieldset
-    ng-form(name="challenge.form")
-      |{{challenge.file}}
-      a(class="pure-button" ng-file-select ng-model="challenge.file")
-        |Select File
-      label(for="message", ng-show="challenge.form.message.$valid || challenge.form.message.$pristine")
-        | message:
-      label.error(for="message", ng-show="challenge.form.message.$invalid && challenge.form.message.$dirty")
-        | message is required:
-      input(name="message", data-ng-model="challenge.message", required="")
-a.pure-button.pure-button-primary(data-ng-click="challenge.sendMessage()")
-  |Send Message
-div
-  form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
-    fieldset
-     ng-form(name="challenge.completed")
-        |{{challenge.proof}}
-        a(class="pure-button" ng-file-select ng-model="challenge.proof")
-          |Select File
-        label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")
-          | message:
-        label.error(for="message", ng-show="challenge.completed.message.$invalid && challenge.completed.message.$dirty")
-          | message is required:
-        input(name="message", data-ng-model="challenge.completedMessage", required="")
-  a.pure-button.pure-button-primary(data-ng-click="challenge.finishIt()")
-    |Completed
+.canvas
+  .inner-space-2
+    h1
+      |This is your challenge!
+    .box-content
+      .inner-space
+        .challenge-image
+          img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+        h1.align-center.accent
+          |{{challenge.info.name}}
+        h1
+          |People in this challenge: {{challenge.users.length}}
+        .pure-g
+          .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.users")
+            .padding-left-1
+              .user-image.align-center
+                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+              h3
+                |{{user.email}}
+        h1
+          |Has Accepted {{challenge.hasAccepted.length}}
+        .pure-g
+          .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasAccepted")
+            .padding-left-1
+              .user-image.align-center
+                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+              h3
+                |{{user.email}}
+        h1
+          |Has not Accepted  {{challenge.hasNotAccepted.length}}
+        .pure-g
+          .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasNotAccepted")
+            .padding-left-1
+              .user-image.align-center
+                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+              h3
+                |{{user.email}}
+        h1
+          |Has Completed  {{challenge.hasCompleted.length}}
+        .pure-g
+          .user-card.pure-u-1.pure-u-sm-1-4(data-ng-repeat="user in challenge.hasCompleted")
+            .padding-left-1
+              .user-image.align-center
+                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+              h3
+                |{{user.email}}
+        h1
+          |Messages {{challenge.messages.length}}
+          |{{challenge.message}}
+        .message-box(data-ng-repeat="message in challenge.messages")
+          .pure-g
+            .pure-u-1-8
+              .message-avatar
+                img(data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg")
+            .message-text.pure-u-7-8
+              |{{message.message}}
+
+        h1
+          |Send a message
+        form.pure-form.pure-form-stacked(name="challenge.form", novalidate="")
+          fieldset
+            ng-form(name="challenge.form")
+              |{{challenge.file}}
+              a(class="pure-button" ng-file-select ng-model="challenge.file")
+                |Select File
+              label(for="message", ng-show="challenge.form.message.$valid || challenge.form.message.$pristine")
+                | message:
+              label.error(for="message", ng-show="challenge.form.message.$invalid && challenge.form.message.$dirty")
+                | message is required:
+              input(name="message", data-ng-model="challenge.message", required="")
+        a.pure-button.pure-button-primary(data-ng-click="challenge.sendMessage()")
+          |Send Message
+        h1
+          |Tell everybody you had completed the challenge
+        div
+          form.pure-form.pure-form-stacked(name="challenge.completed", novalidate="")
+            fieldset
+             ng-form(name="challenge.completed")
+                |{{challenge.proof}}
+                a(class="pure-button" ng-file-select ng-model="challenge.proof")
+                  |Select File
+                label(for="message", ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine")
+                  | message:
+                label.error(for="message", ng-show="challenge.completed.message.$invalid && challenge.completed.message.$dirty")
+                  | message is required:
+                input(name="message", data-ng-model="challenge.completedMessage", required="")
+          a.pure-button.pure-button-primary(data-ng-click="challenge.finishIt()")
+            |Completed

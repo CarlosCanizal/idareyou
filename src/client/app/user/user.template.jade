@@ -1,44 +1,54 @@
-h1
-  |Login
-form.pure-form.pure-form-stacked(name="loginForm", novalidate="")
-  fieldset
-    label(for="username", ng-show="loginForm.username.$valid || loginForm.username.$pristine")
-      | Email:
-    label.error(for="username", ng-show="loginForm.username.$invalid && loginForm.username.$dirty")
-      | Invalid Email:
-    input.pure-input-1#username(name="username", type="email", data-ng-model="user.info.username", required="")
-      
+.box
+    .pure-g
+      .pure-u-1.pure-u-sm-1-2
+        .inner-space
+          .align-center
+            span.title
+              | Login
+          form.pure-form.pure-form-stacked(name="loginForm", novalidate="")
+            fieldset
+              label(for="username", ng-show="loginForm.username.$valid || loginForm.username.$pristine")
+                | Email:
+              label.error(for="username", ng-show="loginForm.username.$invalid && loginForm.username.$dirty")
+                | Invalid Email:
+              input.pure-input-1#username(name="username", type="email", data-ng-model="user.info.username", required="")
+                
 
-    label(for="password", ng-show="loginForm.password.$valid || loginForm.password.$pristine")
-      | Password:
-    label.error(for="password", ng-show="loginForm.password.$invalid && loginForm.password.$dirty")
-      | Password:
-    input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
-  a.pure-button.pure-button-primary(ng-click="user.login()")
-    | Login
-h1
-  |Register
-form.pure-form.pure-form-stacked(name="registerForm", novalidate="")
-  fieldset
-    label(for="username", ng-show="registerForm.username.$valid || registerForm.username.$pristine")
-      | Correo Electronico:
-    label.error(for="username", ng-show="registerForm.username.$invalid && registerForm.username.$dirty")
-      | Correo Electronico invalido:
-    .form-icon
-      input.pure-input-1#username(name="username", type="email", data-ng-model="user.new.username", required="")
-    label(for="password", ng-show="((registerForm.password.$valid || registerForm.password.$pristine) || (!registerForm.password.$error.required  && registerForm.password.$error.match && registerForm.confirmPassword.$pristine)) && !(registerForm.confirmPassword.$dirty && registerForm.password.$error.required)")
-      | Contraseña
-    label.error(for="password", ng-show="registerForm.password.$error.required && (registerForm.password.$dirty || registerForm.confirmPassword.$dirty)")
-      | Contraseña requerida:
-    label.error(for="password", ng-show="registerForm.confirmPassword.$dirty && !registerForm.password.$error.required && registerForm.password.$error.match && registerForm.password.$dirty")
-      | Contraseña no coincide:
-    .form-icon
-      input.pure-input-1#password(name="password", type="password" data-ng-model="user.new.password", required="", password-match="passwordMatch")
-    label(for="confirmPassword", ng-show="registerForm.confirmPassword.$valid || registerForm.confirmPassword.$pristine")
-      | Confirmar Contraseña:
-    label.error(for="confirmPassword", ng-show="registerForm.confirmPassword.$error.required && registerForm.confirmPassword.$dirty")
-      | Contraseña requerida:
-    .form-icon
-      input.pure-input-1#confirmPassword(name="confirmPassword", type="password", data-ng-model="passwordMatch", required="")
-a.pure-button.pure-button-primary(ng-click="user.register()")
-  |Register
+              label(for="password", ng-show="loginForm.password.$valid || loginForm.password.$pristine")
+                | Password:
+              label.error(for="password", ng-show="loginForm.password.$invalid && loginForm.password.$dirty")
+                | Password:
+              input.pure-input-1#password(name="password", type="password", data-ng-model="user.info.password", required="")
+            .align-center
+              a.pure-button.pure-button-primary(ng-click="user.login()")
+                | Login
+      .pure-u-1.pure-u-sm-1-2
+        .inner-space.border-left
+          .align-center
+            span.title
+              | Register
+          form.pure-form.pure-form-stacked(name="registerForm", novalidate="")
+            fieldset
+              label(for="username", ng-show="registerForm.username.$valid || registerForm.username.$pristine")
+                | Email:
+              label.error(for="username", ng-show="registerForm.username.$invalid && registerForm.username.$dirty")
+                | Invalid Email:
+              .form-icon
+                input.pure-input-1#username(name="username", type="email", data-ng-model="user.new.username", required="")
+              label(for="password", ng-show="((registerForm.password.$valid || registerForm.password.$pristine) || (!registerForm.password.$error.required  && registerForm.password.$error.match && registerForm.confirmPassword.$pristine)) && !(registerForm.confirmPassword.$dirty && registerForm.password.$error.required)")
+                | Password
+              label.error(for="password", ng-show="registerForm.password.$error.required && (registerForm.password.$dirty || registerForm.confirmPassword.$dirty)")
+                | Password required:
+              label.error(for="password", ng-show="registerForm.confirmPassword.$dirty && !registerForm.password.$error.required && registerForm.password.$error.match && registerForm.password.$dirty")
+                | Password does not match:
+              .form-icon
+                input.pure-input-1#password(name="password", type="password" data-ng-model="user.new.password", required="", password-match="passwordMatch")
+              label(for="confirmPassword", ng-show="registerForm.confirmPassword.$valid || registerForm.confirmPassword.$pristine")
+                | Confirm Password:
+              label.error(for="confirmPassword", ng-show="registerForm.confirmPassword.$error.required && registerForm.confirmPassword.$dirty")
+                | Password required:
+              .form-icon
+                input.pure-input-1#confirmPassword(name="confirmPassword", type="password", data-ng-model="passwordMatch", required="")
+          .align-center
+            a.pure-button.pure-button-primary(ng-click="user.register()")
+              |Register

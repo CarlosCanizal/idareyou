@@ -1,27 +1,82 @@
 
-<h1>Show</h1>{{challenge.info}}
-<h1>Users {{challenge.users.length}}</h1>{{challenge.users}}
-<h1>Has Accepted {{challenge.hasAccepted.length}}</h1>{{challenge.hasAccepted}}
-<h1>Has not Accepted  {{challenge.hasNotAccepted.length}}</h1>{{challenge.hasNotAccepted}}
-<h1>Has Completed  {{challenge.hasCompleted.length}}</h1>{{challenge.hasCompleted}}
-<h1>Messages |{{challenge.messages.length}}</h1>{{challenge.messages}}
-<form name="challenge.form" novalidate="" class="pure-form pure-form-stacked">
-  <fieldset>
-    <ng-form name="challenge.form">{{challenge.file}}<a ng-file-select="ng-file-select" ng-model="challenge.file" class="pure-button">Select File</a>
-      <label for="message" ng-show="challenge.form.message.$valid || challenge.form.message.$pristine">message:</label>
-      <label for="message" ng-show="challenge.form.message.$invalid &amp;&amp; challenge.form.message.$dirty" class="error">message is required:</label>
-      <input name="message" data-ng-model="challenge.message" required=""/>
-    </ng-form>
-  </fieldset>
-</form><a data-ng-click="challenge.sendMessage()" class="pure-button pure-button-primary">Send Message</a>
-<div>
-  <form name="challenge.completed" novalidate="" class="pure-form pure-form-stacked">
-    <fieldset>
-      <ng-form name="challenge.completed">{{challenge.proof}}<a ng-file-select="ng-file-select" ng-model="challenge.proof" class="pure-button">Select File</a>
-        <label for="message" ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine">message:</label>
-        <label for="message" ng-show="challenge.completed.message.$invalid &amp;&amp; challenge.completed.message.$dirty" class="error">message is required:</label>
-        <input name="message" data-ng-model="challenge.completedMessage" required=""/>
-      </ng-form>
-    </fieldset>
-  </form><a data-ng-click="challenge.finishIt()" class="pure-button pure-button-primary">Completed</a>
+<div class="canvas">
+  <div class="inner-space-2">
+    <h1>This is your challenge!</h1>
+    <div class="box-content">
+      <div class="inner-space">
+        <div class="challenge-image"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+        <h1 class="align-center accent">{{challenge.info.name}}</h1>
+        <h1>People in this challenge: {{challenge.users.length}}</h1>
+        <div class="pure-g">
+          <div data-ng-repeat="user in challenge.users" class="user-card pure-u-1 pure-u-sm-1-4">
+            <div class="padding-left-1">
+              <div class="user-image align-center"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+              <h3>{{user.email}}</h3>
+            </div>
+          </div>
+        </div>
+        <h1>Has Accepted {{challenge.hasAccepted.length}}</h1>
+        <div class="pure-g">
+          <div data-ng-repeat="user in challenge.hasAccepted" class="user-card pure-u-1 pure-u-sm-1-4">
+            <div class="padding-left-1">
+              <div class="user-image align-center"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+              <h3>{{user.email}}</h3>
+            </div>
+          </div>
+        </div>
+        <h1>Has not Accepted  {{challenge.hasNotAccepted.length}}</h1>
+        <div class="pure-g">
+          <div data-ng-repeat="user in challenge.hasNotAccepted" class="user-card pure-u-1 pure-u-sm-1-4">
+            <div class="padding-left-1">
+              <div class="user-image align-center"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+              <h3>{{user.email}}</h3>
+            </div>
+          </div>
+        </div>
+        <h1>Has Completed  {{challenge.hasCompleted.length}}</h1>
+        <div class="pure-g">
+          <div data-ng-repeat="user in challenge.hasCompleted" class="user-card pure-u-1 pure-u-sm-1-4">
+            <div class="padding-left-1">
+              <div class="user-image align-center"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+              <h3>{{user.email}}</h3>
+            </div>
+          </div>
+        </div>
+        <h1>
+          Messages {{challenge.messages.length}}
+          {{challenge.message}}
+        </h1>
+        <div data-ng-repeat="message in challenge.messages" class="message-box">
+          <div class="pure-g">
+            <div class="pure-u-1-8">
+              <div class="message-avatar"><img data-ng-src="https://www.colourbox.com/preview/2271658-silhouette-of-a-woman-running-against-the-evening-sky.jpg"/></div>
+            </div>
+            <div class="message-text pure-u-7-8">{{message.message}}</div>
+          </div>
+        </div>
+        <h1>Send a message</h1>
+        <form name="challenge.form" novalidate="" class="pure-form pure-form-stacked">
+          <fieldset>
+            <ng-form name="challenge.form">{{challenge.file}}<a ng-file-select="ng-file-select" ng-model="challenge.file" class="pure-button">Select File</a>
+              <label for="message" ng-show="challenge.form.message.$valid || challenge.form.message.$pristine">message:</label>
+              <label for="message" ng-show="challenge.form.message.$invalid &amp;&amp; challenge.form.message.$dirty" class="error">message is required:</label>
+              <input name="message" data-ng-model="challenge.message" required=""/>
+            </ng-form>
+          </fieldset>
+        </form><a data-ng-click="challenge.sendMessage()" class="pure-button pure-button-primary">Send Message</a>
+        <h1>Tell everybody you had completed the challenge</h1>
+        <div>
+          <form name="challenge.completed" novalidate="" class="pure-form pure-form-stacked">
+            <fieldset>
+              <ng-form name="challenge.completed">{{challenge.proof}}<a ng-file-select="ng-file-select" ng-model="challenge.proof" class="pure-button">Select File</a>
+                <label for="message" ng-show="challenge.completed.message.$valid || challenge.completed.message.$pristine">message:</label>
+                <label for="message" ng-show="challenge.completed.message.$invalid &amp;&amp; challenge.completed.message.$dirty" class="error">message is required:</label>
+                <input name="message" data-ng-model="challenge.completedMessage" required=""/>
+              </ng-form>
+            </fieldset>
+          </form><a data-ng-click="challenge.finishIt()" class="pure-button pure-button-primary">Completed</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

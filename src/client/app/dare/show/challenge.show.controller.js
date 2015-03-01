@@ -30,6 +30,7 @@
 
 
     dareApi.getMessages(challenge.info.objectId).then(function(result){
+      console.log(result);
       challenge.messages = result.results;
     },function(error){
       console.error(error);

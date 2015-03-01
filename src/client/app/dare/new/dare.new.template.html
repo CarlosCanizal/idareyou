@@ -1,17 +1,27 @@
 
-<h1>New Dare</h1>
-<form name="form" novalidate="" class="pure-form pure-form-stacked">
-  <fieldset>
-    <ng-form name="form">{{image}}<a ng-file-select="ng-file-select" ng-model="dare.file" class="pure-button">Select File</a>
-      <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
-      <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
-      <input name="name" data-ng-model="dare.info.name" required=""/>
-      <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
-      <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
-      <input name="description" data-ng-model="dare.info.description" required=""/>
-      <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
-      <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
-      <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
-    </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary">Create</a>
-  </fieldset>
-</form>
+<div class="canvas">
+  <div class="inner-space-2">
+    <h1>New Challenge</h1>
+    <div class="box-content">
+      <div class="inner-space">
+        <form name="form" novalidate="" class="pure-form pure-form-stacked">
+          <fieldset>
+            <ng-form name="form">
+              <label>Select an image for the challenge</label>
+              <div><a ng-file-select="ng-file-select" ng-model="dare.file" class="pure-button">Select File</a></div>
+              <label for="name" ng-show="form.name.$valid || form.name.$pristine">Name:</label>
+              <label for="name" ng-show="form.name.$invalid &amp;&amp; form.name.$dirty" class="error">Name is required:</label>
+              <input name="name" data-ng-model="dare.info.name" required=""/>
+              <label for="description" ng-show="form.description.$valid || form.description.$pristine">Description:</label>
+              <label for="description" ng-show="form.description.$invalid &amp;&amp; form.description.$dirty" class="error">Description is required:</label>
+              <input name="description" data-ng-model="dare.info.description" required=""/>
+              <label for="pledge" ng-show="form.pledge.$valid || form.pledge.$pristine">Pledge:</label>
+              <label for="pledge" ng-show="form.pledge.$invalid &amp;&amp; form.pledge.$dirty" class="error">Pledge is required:</label>
+              <input name="pledge" type="number" data-ng-model="dare.info.pledge" required=""/>
+            </ng-form><a data-ng-click="dare.saveDare()" class="pure-button pure-button-primary margin-top-1">Create</a>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

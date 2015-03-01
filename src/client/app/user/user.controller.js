@@ -13,9 +13,7 @@
     user.login = function(){
       if($scope.loginForm.$valid){
         userApi.login(user.info).then(function(result){
-          console.log(result);
-          // user.store(user);
-          // console.log(user);
+          $state.go('challenges');
         },function(error){
           console.log(error);
         });
@@ -43,9 +41,5 @@
       storage.set('user',userInfo);
     }
   }
-
-  
-
-
 
 })();
