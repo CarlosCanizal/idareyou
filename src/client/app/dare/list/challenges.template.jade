@@ -10,7 +10,7 @@
           | Create a new challenge!
     .pure-g(data-ng-show="challenges.list.length > 0")
       .pure-u-1.pure-u-sm-1-2
-        .challenge-item(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
+        .challenge-item.pointer(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
           .challenge-item-avatar.margin-right-1
               img(data-ng-src="{{item.dare.image.url}}")
             .challenge-text
