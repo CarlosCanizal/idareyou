@@ -17,7 +17,8 @@
       user.error = null;
       if($scope.loginForm.$valid){
         shell.showLoading();
-        userApi.login(user.info).then(function(result){
+        userApi.login(user.info).then(function(currentUser){
+          shell.setUser(currentUser);
           $state.go('challenges');
         },function(error){
           user.error = {message:error.data.error};
@@ -33,7 +34,8 @@
         user.errorRegister = null;
         if($scope.registerForm.$valid){
           shell.showLoading();
-          userApi.register(user.new).then(function(user){
+          userApi.register(user.new).then(function(currentUser){
+            shell.setUser(currentUser);
             $state.go('challenges');
           },function(error){
             console.error(error);

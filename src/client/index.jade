@@ -20,13 +20,17 @@ html(data-ng-app="app")
           img(data-ng-src="../common/images/challenge_logo.png")
           span.title
             |Challenge
-          nav.menu
+          nav.menu(data-ng-if="shell.user")
             a(data-ui-sref="challenges")
               |My Challenges     
             a(data-ui-sref="newDare")
               |Challenge
+            a(data-ng-click="shell.logOut()")
+              |LogOut
+          nav.menu(data-ng-if="!shell.user")
             a(data-ui-sref="user")
               |Login
+        
       ui-view
     .opacity
     .layer

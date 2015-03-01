@@ -21,7 +21,10 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
       url:'/dare/new',
       templateUrl: 'app/dare/new/dare.new.template.html',
       controller: 'Dare',
-      controllerAs: 'dare'
+      controllerAs: 'dare',
+      data:{
+        access: true
+      }
     })
     .state('challenge', {
       url:'/challenge/:challengeId',
@@ -33,13 +36,19 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
           var challengeId = $stateParams.challengeId;
           return dareApi.get(challengeId);
         }
+      },
+      data:{
+        access: true
       }
     })
     .state('challenges', {
       url:'/challenges',
       templateUrl: 'app/dare/list/challenges.template.html',
       controller: 'Challenges',
-      controllerAs: 'challenges'
+      controllerAs: 'challenges',
+      data:{
+        access: true
+      }
     })
     .state('invite', {
       url:'/invite/:dareId',
@@ -51,6 +60,9 @@ function config($locationProvider,$urlRouterProvider, $stateProvider) {
           var dareId = $stateParams.dareId;
           return dareApi.get(dareId);
         }
+      },
+      data:{
+        access: true
       }
     })
     .state('response', {

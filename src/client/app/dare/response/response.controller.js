@@ -11,6 +11,13 @@
     var shell = $scope.shell;
     var response = this;
     invitation = invitation.results[0];
+
+    if(!invitation){
+      $state.go('home');
+      return;
+    }
+
+
     response.email = invitation.email;
     response.dare = invitation.dare;
     

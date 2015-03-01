@@ -16,6 +16,7 @@
 
     var factory = {
       login: login,
+      logout: logout,
       register: register,
       setSessionToken: setSessionToken,
       getCurrentUser: getCurrentUser,
@@ -34,6 +35,10 @@
         deferred.reject(error);
       });
       return deferred.promise
+    }
+
+    function logout(){
+      storage.remove('user');
     }
 
     function register(params) {

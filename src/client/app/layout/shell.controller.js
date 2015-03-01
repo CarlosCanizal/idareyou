@@ -21,6 +21,16 @@
       shell.loading = false;
     }
 
+    shell.setUser = function(user){
+      shell.user = user;
+    }
+
+    shell.logOut = function(){
+      shell.user = null;
+      userApi.logout();
+      $state.go('home');
+    }
+
     
   }
 

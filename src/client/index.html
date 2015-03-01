@@ -15,7 +15,8 @@
     <div class="content">
       <div class="header">
         <div class="inner-space"><img data-ng-src="../common/images/challenge_logo.png"><span class="title">Challenge</span>
-          <nav class="menu"><a data-ui-sref="challenges">My Challenges     </a><a data-ui-sref="newDare">Challenge</a><a data-ui-sref="user">Login</a></nav>
+          <nav data-ng-if="shell.user" class="menu"><a data-ui-sref="challenges">My Challenges     </a><a data-ui-sref="newDare">Challenge</a><a data-ng-click="shell.logOut()">LogOut</a></nav>
+          <nav data-ng-if="!shell.user" class="menu"><a data-ui-sref="user">Login</a></nav>
         </div>
       </div>
       <ui-view></ui-view>
