@@ -65,7 +65,9 @@
         if(challenge.proof)
           file = challenge.proof[0];
          dareApi.finishIt(shell.user,challenge.info,challenge.completedMessage,file).then(function(result){
-          result.file.url =  $sce.trustAsResourceUrl(result.file.url);
+          if(result.fileType == 'video/quicktime'){
+            result.file.url =  $sce.trustAsResourceUrl(result.file.url);
+          }
           challenge.messages.push(result);
          }).then(function(){
           return dareApi.getUsers(challenge.info.objectId);
