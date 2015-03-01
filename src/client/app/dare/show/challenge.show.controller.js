@@ -50,7 +50,8 @@
           file = challenge.file[0];
 
          dareApi.sendMessage(shell.user,challenge.info,challenge.message,file).then(function(result){
-          challenge.messages.push({objectId:result.objectId, message: challenge.message,type:'message',user:{objectId:shell.user.objectId,username:shell.user.username}});
+          result.file.url =  $sce.trustAsResourceUrl(result.file.url);
+          challenge.messages.push(result);
          },function(error){
           console.log(error);
          }).finally(shell.hideLoading());
@@ -63,10 +64,17 @@
         var file;
         if(challenge.proof)
           file = challenge.proof[0];
-
          dareApi.finishIt(shell.user,challenge.info,challenge.completedMessage,file).then(function(result){
-          console.log('done!');
-         },function(error){
+          result.file.url =  $sce.trustAsResourceUrl(result.file.url);
+          challenge.messages.push(result);
+         }).then(function(){
+          return dareApi.getUsers(challenge.info.objectId);
+         }).then(function(result){      
+            challenge.users = result.all;
+            challenge.hasAccepted = result.hasAccepted;
+            challenge.hasNotAccepted = result.hasNotAccepted;
+            challenge.hasCompleted = result.hasCompleted;
+          },function(error){
           console.log(error);
          }).finally(shell.hideLoading);
       }

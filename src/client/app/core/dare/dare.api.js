@@ -110,6 +110,8 @@
           params['fileType'] = file.data.type;
           
           return Message.save(params).$promise;
+        }).then(function(result){
+          return Message.get({objectId:result.objectId}).$promise;
         });
       }else{
         return Message.save(params).$promise;
@@ -133,12 +135,13 @@
         }).then(function(result){
           var invitation = result.results[0];
           return Response.update({objectId: invitation.objectId,completed:true}).$promise;
-
         }).then(function(){
-          params['file'] = uploadFile.data;
+          params['file'] = {"__type": "File",'name':uploadFile.data.name};
           params['fileType'] = uploadFile.data.type;
           return Message.save(params).$promise;
-        });
+        }).then(function(result){
+          return Message.get({objectId:result.objectId}).$promise;
+        });;
       }else{
         return Message.save(params).$promise;
       }
