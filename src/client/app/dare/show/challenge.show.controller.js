@@ -7,7 +7,9 @@
 
   Show.$inject = ['$scope','$state', 'dareApi', 'info'];
 
+
   function Show($scope,$state, dareApi, info) {
+    
     var shell = $scope.shell;
     var challenge = this;
     challenge.info = info;
@@ -18,8 +20,7 @@
     challenge.hasCompleted = [];
 
 
-    dareApi.getUsers(challenge.info.objectId).then(function(result){
-      console.log(result);
+    dareApi.getUsers(challenge.info.objectId).then(function(result){      
       challenge.users = result.all;
       challenge.hasAccepted = result.hasAccepted;
       challenge.hasNotAccepted = result.hasNotAccepted;

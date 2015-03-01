@@ -199,6 +199,35 @@ body {
     width: 100%; }
 
 /* line 178, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.challenge-item {
+  position: relative; }
+
+/* line 181, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.challenge-item-avatar {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2; }
+  /* line 190, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  .challenge-item-avatar img {
+    width: 100%; }
+
+/* line 193, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.challenge-text {
+  text-transform: uppercase;
+  position: relative;
+  padding: 1.5rem 1rem 1.5rem 5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.87);
+  width: 70%;
+  margin-bottom: 1rem; }
+
+/* line 203, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-avatar {
   position: absolute;
   top: 0.5rem;
@@ -206,11 +235,11 @@ body {
   height: 3rem;
   border-radius: 50%;
   overflow: hidden; }
-  /* line 185, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  /* line 210, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
   .message-avatar img {
     width: 100%; }
 
-/* line 187, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 212, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-text {
   position: relative;
   padding: 1.5rem 1rem 1.5rem 4rem;
@@ -221,43 +250,50 @@ body {
   width: 70%;
   margin-bottom: 1rem; }
 
-/* line 197, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 222, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.message-image {
+  margin-top: 0.5rem; }
+  /* line 224, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  .message-image img {
+    width: 100%; }
+
+/* line 227, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-avatar-left {
   left: 0.5rem; }
 
-/* line 200, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 230, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-avatar-right {
   right: 0.5rem; }
 
-/* line 203, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 233, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-text-right {
   text-align: right;
   padding: 1.5rem 4rem 1.5rem 1rem; }
 
-/* line 208, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 238, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .avatar {
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto; }
-  /* line 214, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  /* line 244, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
   .avatar img {
     width: 100%; }
 
-/* line 216, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 246, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .message-right {
   width: 100%; }
 
-/* line 219, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 249, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .float-right {
   float: right; }
 
-/* line 223, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 253, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 form label {
   padding: 0.3rem 0; }
 
-/* line 226, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 256, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -266,37 +302,41 @@ form label {
   clear: both;
   height: 0; }
 
-/* line 233, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 263, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .clearfix {
   display: inline-block; }
 
-/* line 236, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 266, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 * html .clearfix {
   height: 1%; }
 
-/* line 238, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 268, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .clearfix {
   display: block; }
 
-/* line 241, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 271, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .error {
   color: #dd514c; }
 
-/* line 244, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 274, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .success {
   color: #1cb841; }
 
-/* line 247, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 277, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .form-icon {
   position: relative; }
-  /* line 249, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+  /* line 279, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
   .form-icon i.fa-dot-circle-o {
     color: rgba(0, 0, 0, 0.26); }
 
-/* line 252, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+/* line 282, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .medium-icon {
   font-size: 1.5rem;
   position: absolute;
   top: 0.4rem;
   right: 0.5rem;
   padding-left: 0.5rem; }
+
+/* line 289, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
+.no-margin {
+  margin: 0; }

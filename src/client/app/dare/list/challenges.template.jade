@@ -2,13 +2,28 @@
   .inner-space-2
     h1
       |My Challenges
-    .pure-g
-      .card.pure-1.pure-u-sm-1-4(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
-        .inner-space-right-1
-          .inner-space-1-2.border.card-opacity
-            .avatar
+    .box-content.align-center(data-ng-if="challenges.list.length < 1")
+      .inner-space
+        h1.no-margin
+          |You don't have any challenge yet!
+        a.pure-button.pure-button-primary.big-button.margin-top-1(data-ui-sref="newDare")
+          | Create a new challenge!
+    .pure-g(data-ng-show="challenges.list.length > 0")
+      .pure-u-1.pure-u-sm-1-2
+        .challenge-item(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
+          .challenge-item-avatar.margin-right-1
               img(data-ng-src="{{item.dare.image.url}}")
-            .challenge-name.accent
+            .challenge-text
               |{{item.dare.name}}
-            div.align-center
-              |Pledge: {{item.dare.pledge | currency}}
+      .pure-u-1.pure-u-sm-1-2
+        iframe(width="100%",height="400",frameborder="0",scrolling="no",marginheight="0",marginwidth="0",src="http://juanmarinbear.maps.arcgis.com/apps/Embed/index.html?webmap=8bec834a65e7498eb863f6eab01b5eb4&amp;extent=-171.4226,0.3655,-19.0202,63.2399&amp;zoom=true&amp;scale=true&amp;theme=light")
+    //- .pure-g(data-ng-show="challenges.list.length > 0")
+    //-   .card.pure-1.pure-u-sm-1-4(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
+    //-     .inner-space-right-1
+    //-       .inner-space-1-2.border.card-opacity
+    //-         .avatar
+    //-           img(data-ng-src="{{item.dare.image.url}}")
+    //-         .challenge-name.accent
+    //-           |{{item.dare.name}}
+    //-         div.align-center
+    //-           |Pledge: {{item.dare.pledge | currency}}

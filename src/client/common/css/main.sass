@@ -175,6 +175,31 @@ body
   img
     width:100%
 
+.challenge-item
+  position:relative
+
+.challenge-item-avatar
+  position:absolute
+  top:0.5rem  
+  left: 1rem
+  width:3rem
+  height:3rem
+  border-radius: 50%
+  overflow: hidden
+  z-index: 2
+  img
+    width:100%
+
+.challenge-text
+  text-transform: uppercase
+  position:relative
+  padding:1.5rem 1rem 1.5rem 5rem
+  background-color: rgba(0,0,0,0.7)
+  border-radius: 0.5rem
+  color: $text-primary-white
+  width:70%
+  margin-bottom: 1rem
+
 .message-avatar
   position:absolute
   top:0.5rem  
@@ -193,6 +218,11 @@ body
   float:right
   width:70%
   margin-bottom: 1rem
+
+.message-image
+  margin-top: 0.5rem
+  img
+    width:100%;
 
 .message-avatar-left
   left:0.5rem
@@ -255,4 +285,7 @@ form
   top: 0.4rem
   right: 0.5rem
   padding-left: 0.5rem
+
+.no-margin
+  margin:0
 

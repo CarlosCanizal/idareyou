@@ -102,7 +102,7 @@
                     message:message};
       if(file){
         return this.upload(headers.keys, file).then(function(file){
-          params['file'] = file.data;
+          params['file'] = {"__type": "File",'name':file.data.name};
           return Message.save(params).$promise;
         });
       }else{

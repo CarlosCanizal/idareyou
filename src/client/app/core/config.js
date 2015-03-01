@@ -5,7 +5,7 @@ angular
 config.$inject = ['$locationProvider', '$urlRouterProvider','$stateProvider'];
 
 function config($locationProvider,$urlRouterProvider, $stateProvider) {
-
+  
   $stateProvider
     .state('home', {
       url:'/',

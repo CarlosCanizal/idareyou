@@ -4,34 +4,54 @@
       |New Challenge
     .box-content
       .inner-space
-        form.pure-form.pure-form-stacked(name="form", novalidate="")
-          fieldset
-            ng-form(name="form")
-              label
-                |Select an image for the challenge
-              div
-                a(class="pure-button" ng-file-select ng-model="dare.file")
-                  |Select File
-              label(for="name", ng-show="form.name.$valid || form.name.$pristine")
-                | Name:
-              label.error(for="name", ng-show="form.name.$invalid && form.name.$dirty")
-                | Name is required:
-              input(name="name", data-ng-model="dare.info.name", required="")
-              label(for="description", ng-show="form.description.$valid || form.description.$pristine")
-                | Description:
-              label.error(for="description", ng-show="form.description.$invalid && form.description.$dirty")
-                | Description is required:
-              input(name="description", data-ng-model="dare.info.description", required="")
-              label(for="pledge", ng-show="form.pledge.$valid || form.pledge.$pristine")
-                | Pledge:
-              label.error(for="pledge", ng-show="form.pledge.$invalid && form.pledge.$dirty")
-                | Pledge is required:
-              input(name="pledge", type="number", data-ng-model="dare.info.pledge", required="")
+        .pure-g
+          .pure-u-1.pure-u-sm-1-3
+            form.pure-form.pure-form-stacked(name="form", novalidate="")
+              fieldset
+                ng-form(name="form")
+                  label
+                    |Select an image for the challenge
+                  div
+                    a(class="pure-button" ng-file-select ng-model="dare.file")
+                      |Select File
 
-              label(for="zip", ng-show="form.zip.$valid || form.zip.$pristine")
-                | ZIP:
-              label.error(for="zip", ng-show="form.zip.$invalid && form.zip.$dirty")
-                | ZIP is required:
-              input(name="zip", data-ng-model="dare.info.zip", required="")
-            a.pure-button.pure-button-primary.margin-top-1(data-ng-click="dare.saveDare()")
-              |Create
+                  label(for="name", ng-show="form.name.$valid || form.name.$pristine")
+                    | Name:
+                  label.error(for="name", ng-show="form.name.$invalid && form.name.$dirty")
+                    | Name is required:
+                  .form-icon
+                    input.pure-input-1(name="name", data-ng-model="dare.info.name", required="")
+                    i.fa.fa-dot-circle-o.medium-icon(ng-show="form.name.$pristine")
+                    i.fa.fa-check-circle-o.success.medium-icon(ng-show="form.name.$valid && form.name.$dirty")
+                    i.fa.fa-times-circle-o.error.medium-icon(ng-show="form.name.$invalid && form.name.$dirty")
+
+                  label(for="description", ng-show="form.description.$valid || form.description.$pristine")
+                    | Description:
+                  label.error(for="description", ng-show="form.description.$invalid && form.description.$dirty")
+                    | Description is required:
+                  .form-icon
+                    input.pure-input-1(name="description", data-ng-model="dare.info.description", required="")
+                    i.fa.fa-dot-circle-o.medium-icon(ng-show="form.description.$pristine")
+                    i.fa.fa-check-circle-o.success.medium-icon(ng-show="form.description.$valid && form.description.$dirty")
+                    i.fa.fa-times-circle-o.error.medium-icon(ng-show="form.description.$invalid && form.description.$dirty")
+                  label(for="pledge", ng-show="form.pledge.$valid || form.pledge.$pristine")
+                    | Pledge:
+                  label.error(for="pledge", ng-show="form.pledge.$invalid && form.pledge.$dirty")
+                    | Invalid Pledge (must be numeric):
+                  .form-icon
+                    input.pure-input-1(name="pledge", type="number", data-ng-model="dare.info.pledge", required="")
+                    i.fa.fa-dot-circle-o.medium-icon(ng-show="form.pledge.$pristine")
+                    i.fa.fa-check-circle-o.success.medium-icon(ng-show="form.pledge.$valid && form.pledge.$dirty")
+                    i.fa.fa-times-circle-o.error.medium-icon(ng-show="form.pledge.$invalid && form.pledge.$dirty")
+                  label(for="zip", ng-show="form.zip.$valid || form.zip.$pristine")
+                    | ZIP:
+                  label.error(for="zip", ng-show="form.zip.$invalid && form.zip.$dirty")
+                    | ZIP is required:
+                  .form-icon
+                    input.pure-input-1(name="zip", data-ng-model="dare.info.zip", required="")
+                    i.fa.fa-dot-circle-o.medium-icon(ng-show="form.zip.$pristine")
+                    i.fa.fa-check-circle-o.success.medium-icon(ng-show="form.zip.$valid && form.zip.$dirty")
+                    i.fa.fa-times-circle-o.error.medium-icon(ng-show="form.zip.$invalid && form.zip.$dirty")
+                a.pure-button.pure-button-primary.margin-top-1(data-ng-click="dare.saveDare()")
+                  |Create
+            img(data-ng-src="{{dare.file}}")

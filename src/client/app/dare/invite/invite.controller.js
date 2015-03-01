@@ -12,12 +12,14 @@
     dare.info  = info;    
 
     dare.send = function(){
-      dareApi.send(dare.info,dare.email).then(function(result){
-        $state.go('challenges');
-        console.log(result);
-      },function(error){
-        console.log(error);
-      });
+      if($scope.form.$valid){
+        dareApi.send(dare.info,dare.email).then(function(result){
+          $state.go('challenges');
+          console.log(result);
+        },function(error){
+          console.log(error);
+        });
+      }
     }
 
 
