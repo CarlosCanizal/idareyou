@@ -5,9 +5,10 @@
     .pure-g
       .card.pure-1.pure-u-sm-1-4(data-ng-repeat="item in challenges.list", data-ui-sref="challenge({challengeId:item.dare.objectId})")
         .inner-space-right-1
-          .inner-space-1-2.border
-            img(data-ng-src="{{item.dare.image.url}}")
-            .challenge-name
+          .inner-space-1-2.border.card-opacity
+            .avatar
+              img(data-ng-src="{{item.dare.image.url}}")
+            .challenge-name.accent
               |{{item.dare.name}}
-            div
-              |Pledge: {{item.dare.pledge}}
+            div.align-center
+              |Pledge: {{item.dare.pledge | currency}}
