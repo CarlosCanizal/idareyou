@@ -66,7 +66,7 @@
     }
 
     function get(objectId){
-      return Dare.get({objectId:objectId}).$promise;
+      return Dare.get({objectId:objectId, include:'owner'}).$promise;
     }
 
     function getAll(email){
@@ -76,7 +76,7 @@
     }
 
     function send(dare, email){
-      return Cloud.send({invite:{dare:dare, email:email},'function':'Dare'}).$promise;
+      return Cloud.send({invite:{dare:dare, email:email, owner:dare.owner},'function':'Dare'}).$promise;
     }
 
     function saveInvitation(user, dare){
@@ -89,9 +89,10 @@
     }
 
     function response(invitation, response){
+      console.log('invitation',invitation.dare);
       var ownerId = invitation.dare.owner.objectId;
-      return Response.update({objectId:invitation.objectId, accepted: response}).$promise.then(function(){
-        return Cloud.send({dare:dare,ownerId:ownerId,challengeResponse:response,'function':'sendResponse'}).$promise;
+      return Response.update({email:invitation.email ,objectId:invitation.objectId, accepted: response}).$promise.then(function(){
+        return Cloud.send({dare:invitation.dare,ownerId:ownerId,challengeResponse:response,challengee:invitation.email,'function':'sendResponse'}).$promise;
       }); 
     }
 

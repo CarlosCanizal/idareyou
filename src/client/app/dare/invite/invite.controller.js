@@ -9,8 +9,7 @@
 
   function Invite($scope,$state, dareApi, info) {
     var dare = this;
-    dare.info  = info;
-    
+    dare.info  = info;    
 
     dare.send = function(){
       dareApi.send(dare.info,dare.email).then(function(result){
