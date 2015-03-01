@@ -11,6 +11,16 @@
     // jshint validthis: true 
     var shell = this;
     shell.user = userApi.currentUser();
+    shell.loading = false;
+
+    shell.showLoading = function(){
+      shell.loading = true;
+    }
+
+    shell.hideLoading = function(){
+      shell.loading = false;
+    }
+
     
   }
 

@@ -13,12 +13,12 @@
 
     dare.saveDare = function(){
       if($scope.form.$valid){
-        
+        shell.showLoading();        
         dareApi.save(shell.user, dare.info, dare.file).then(function(result){
           $state.go('invite',{dareId:result.objectId});
         },function(error){
           console.log(error);
-        })
+        }).finally(shell.hideLoading);
       }
     }
 

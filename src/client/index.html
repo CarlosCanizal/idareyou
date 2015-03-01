@@ -11,8 +11,8 @@
     <link href="http://fonts.googleapis.com/css?family=Raleway:400,100" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Radley:400,400italic" rel="stylesheet" type="text/css">
   </head>
-  <body>
-    <div data-ng-controller="Shell as shell" class="content">
+  <body data-ng-controller="Shell as shell">
+    <div class="content">
       <div class="header">
         <div class="inner-space"><img data-ng-src="../common/images/challenge_logo.png"><span class="title">Challenge</span>
           <nav class="menu"><a data-ui-sref="challenges">My Challenges     </a><a data-ui-sref="newDare">Challenge</a><a data-ui-sref="user">Login</a></nav>
@@ -22,7 +22,7 @@
     </div>
     <div class="opacity"></div>
     <div class="layer"></div>
-    <div class="loading">
+    <div data-ng-show="shell.loading" class="loading">
       <div class="spinner">
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>

@@ -47,28 +47,21 @@
         h1
           |Messages {{challenge.messages.length}}
 
-        .message-box.clearfix(data-ng-repeat="message in challenge.messages")
-          .message-left
+        .message-box(data-ng-repeat="message in challenge.messages")
+          .message-left(data-ng-if="message.user.objectId == shell.user.objectId")
             .pure-g
-              .message-avatar.margin-right-1
-                  img(gravatar-src="'{{user.email}}'" gravatar-size="100")
-              .message-text.pure-u-1-3
-                |{{message.message}}
-          .message-right
-            .pure-g(data-ng-if="message.user.objectId == shell.user.objectId")
-              .pure-u-1.pure-u-sm-1-2 
-                .message-text.message-text
+              .pure-u-1.pure-u-sm-1-2
+                .message-text.pure-u-1-3.message-text-left
                   |{{message.message}}
-                  .message-image
-                    img(data-ng-src="{{message.file.url}}")
-                  .message-avatar.message-avatar.message-avatar-left
-                    img(gravatar-src="'{{message.user.usernamel}}'" gravatar-size="100")                  
-            .pure-g(data-ng-if="message.user.objectId != shell.user.objectId")
+                  .message-avatar.margin-right-1.message-avatar-left
+                    img(gravatar-src="'{{message.user.username}}'" gravatar-size="100")
+            
+          .message-right(data-ng-if="message.user.objectId != shell.user.objectId")
+            .pure-g
               .pure-u-1.pure-u-sm-1-2 
               .pure-u-1.pure-u-sm-1-2
                 .message-text.message-text-right
                   |{{message.message}}
-                  img(data-ng-src="{{message.file.url}}")
                   .message-avatar.message-avatar-right
                     img(gravatar-src="'{{message.user.username}}'" gravatar-size="100")
               

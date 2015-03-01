@@ -13,8 +13,8 @@ html(data-ng-app="app")
     
     link(href='http://fonts.googleapis.com/css?family=Raleway:400,100',rel='stylesheet',type='text/css')
     link(href='http://fonts.googleapis.com/css?family=Radley:400,400italic',rel='stylesheet',type='text/css')
-  body
-    .content(data-ng-controller="Shell as shell")
+  body(data-ng-controller="Shell as shell")
+    .content
       .header
         .inner-space
           img(data-ng-src="../common/images/challenge_logo.png")
@@ -30,7 +30,7 @@ html(data-ng-app="app")
       ui-view
     .opacity
     .layer
-    .loading
+    .loading(data-ng-show="shell.loading")
       .spinner
         .double-bounce1
         .double-bounce2

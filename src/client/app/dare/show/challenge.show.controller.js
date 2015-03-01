@@ -40,6 +40,7 @@
 
     challenge.sendMessage = function(){
       if(challenge.form.$valid){
+        shell.showLoading();
         var file;
         if(challenge.file)
           file = challenge.file[0];
@@ -48,12 +49,13 @@
           challenge.messages.push({objectId:result.objectId, message: challenge.message,type:'message',user:{objectId:shell.user.objectId,username:shell.user.username}});
          },function(error){
           console.log(error);
-         })
+         }).finally(shell.hideLoading());
       }
     }
 
     challenge.finishIt = function(){
       if(challenge.completed.$valid){
+        shell.showLoading();
         var file;
         if(challenge.proof)
           file = challenge.proof[0];
@@ -62,7 +64,7 @@
           console.log('done!');
          },function(error){
           console.log(error);
-         })
+         }).finally(shell.hideLoading);
       }
     }
 
