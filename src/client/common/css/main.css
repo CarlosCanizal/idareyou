@@ -16,7 +16,7 @@ body {
 
 /* line 31, /Users/carloscanizal/projects/i-dare-you/src/client/common/css/main.sass */
 .layer {
-  background: url('http://i3.kym-cdn.com/photos/images/facebook/000/279/249/c30.jpg');
+  background: url('../images/photogenicGuy.jpg');
   background-size: 100% auto;
   width: 100%;
   height: 100%;
